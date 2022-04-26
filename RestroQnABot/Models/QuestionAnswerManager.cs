@@ -1,5 +1,6 @@
 ﻿using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;
+using Newtonsoft.Json.Linq;
 using RestroQnABot.Interfaces;
 using RestroQnABot.Serializable;
 using RestroQnABot.Utlities;
@@ -20,16 +21,16 @@ namespace RestroQnABot.Models
             _adaptiveCardManager = adaptiveCardManager;
         }
 
-        public async Task<IMessageActivity> GetAnswer(string question, string knowleadgeBaseId)
+        public async Task<IMessageActivity> GetAnswer(string question, string knowleadgeBaseId = null)
         {
 
-            knowleadgeBaseId = String.IsNullOrEmpty(knowleadgeBaseId) ? "common" : knowleadgeBaseId;
+            knowleadgeBaseId = String.IsNullOrEmpty(knowleadgeBaseId) ? "Editorial" : knowleadgeBaseId;
 
             var response = await _questionAnswer.GetAnswers(question, knowleadgeBaseId);
 
-            if (response.answers.Count() > 0)  //response.Answers[0].Metadata.GetValueOrDefault("responsetype").Equals("adaptivecard"))
+            if (response.answers.Count() > 0) 
             {
-                if (!String.IsNullOrEmpty(Convert.ToString(response.answers[0].metadata)))
+                if (!String.IsNullOrEmpty(response.answers[0].metadata.responsetype))
                 {
                     var card = _adaptiveCardManager.FormatAdaptiveCard(response.answers[0]);
 

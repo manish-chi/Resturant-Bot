@@ -13,9 +13,10 @@ namespace RestroQnABot
 {
     public class AdapterWithErrorHandler : CloudAdapter
     {
-        public AdapterWithErrorHandler(BotFrameworkAuthentication auth,TranslationMiddleWare translationMiddleWare, ILogger<IBotFrameworkHttpAdapter> logger)
+        public AdapterWithErrorHandler(BotFrameworkAuthentication auth,InputTypeMiddleWare inputTypeMiddleware,TranslationMiddleWare translationMiddleWare, ILogger<IBotFrameworkHttpAdapter> logger)
             : base(auth, logger)
         {
+            Use(inputTypeMiddleware);
             Use(translationMiddleWare);
 
             OnTurnError = async (turnContext, exception) =>

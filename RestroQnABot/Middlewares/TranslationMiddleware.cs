@@ -2,6 +2,7 @@
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;
 using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json.Linq;
 using RestroQnABot.Models;
 using RestroQnABot.Utlities;
 using System;
@@ -40,18 +41,25 @@ namespace RestroQnABot.Middlewares
                 //If multilanguage is true
                 if (Convert.ToBoolean(isMultiLang))
                 {
-                    var translate = await ShouldTranslateAsync(turnContext, cancellationToken);
-
-                    if (translate)
+                    if (turnContext.Activity.Type == ActivityTypes.Message)
                     {
-                        if (turnContext.Activity.Type == ActivityTypes.Message)
+                        if (!String.IsNullOrEmpty(turnContext.Activity.Text))
                         {
-                            if (!turnContext.Activity.Text.Equals(TranslationSettings.DefaultLanguage))
+                            var translate = await ShouldTranslateAsync(turnContext, cancellationToken);
+
+                            if (translate)
                             {
-                                turnContext.Activity.Text = await _translationClient.TranslateTextRequestAsync(turnContext.Activity.Text, TranslationSettings.DefaultLanguage);
+                                if (!turnContext.Activity.Text.Equals(TranslationSettings.DefaultLanguage))
+                                {
+                                    turnContext.Activity.Text = await _translationClient.TranslateTextRequestAsync(turnContext.Activity.Text, TranslationSettings.DefaultLanguage);
+                                }
                             }
                         }
                     }
+
+                   
+
+                   
 
                     turnContext.OnUpdateActivity(async (newContext, activity, nextUpdate) =>
                     {
@@ -125,7 +133,8 @@ namespace RestroQnABot.Middlewares
                         });
 
                     }
-                    else {
+                    else
+                    {
                         activity.Text = await _translationClient.TranslateTextRequestAsync(activity.Text, targetLocale);
                     }
                 }
@@ -139,8 +148,9 @@ namespace RestroQnABot.Middlewares
 
         private async Task<bool> ShouldTranslateAsync(ITurnContext turnContext, CancellationToken cancellationToken = default(CancellationToken))
         {
-            string userLanguage = await _languageStateProperty.GetAsync(turnContext, () => TranslationSettings.DefaultLanguage, cancellationToken) ?? TranslationSettings.DefaultLanguage;
-            return userLanguage != TranslationSettings.DefaultLanguage;
+
+                string userLanguage = await _languageStateProperty.GetAsync(turnContext, () => TranslationSettings.DefaultLanguage, cancellationToken) ?? TranslationSettings.DefaultLanguage;
+                return userLanguage != TranslationSettings.DefaultLanguage;
         }
     }
 }

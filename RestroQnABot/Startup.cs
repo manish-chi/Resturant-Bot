@@ -45,8 +45,10 @@ namespace RestroQnABot
             // Create the Conversation state. (Used by the Dialog system itself.)
             services.AddSingleton<ConversationState>();
 
-            services.AddSingleton<TranslationMiddleWare>();
+            services.AddSingleton<InputTypeMiddleWare>();
 
+            services.AddSingleton<TranslationMiddleWare>();
+         
             services.AddSingleton(new TranslationManager(new AzureTranslationClient(Configuration)));
 
             services.AddSingleton<IntermediateDialog>();

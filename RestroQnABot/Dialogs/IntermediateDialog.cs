@@ -40,17 +40,7 @@ namespace RestroQnABot.Dialogs
 
         private async Task<DialogTurnResult> GetNoAnswerFoundAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            var reply = stepContext.Result as IMessageActivity;
-
-            if (reply.Text.Equals("No Answer Found", StringComparison.InvariantCultureIgnoreCase))
-            {
-                return await stepContext.BeginDialogAsync(nameof(QuestionAnsweringDialog), "NoAnswerFound", cancellationToken);
-            }
-            else
-            {
-                await stepContext.Context.SendActivityAsync(reply, cancellationToken);
-                return await stepContext.EndDialogAsync(null, cancellationToken);
-            }           
+            return await this.ForwardToQnADialog(stepContext,cancellationToken);
         }
 
         private async Task<DialogTurnResult> GetCommonBotAnswerAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
@@ -65,31 +55,37 @@ namespace RestroQnABot.Dialogs
             }
             else {
                  
-                return await stepContext.BeginDialogAsync(nameof(QuestionAnsweringDialog), "common", cancellationToken);
-
-               
+                return await stepContext.BeginDialogAsync(nameof(QuestionAnsweringDialog),cancellationToken);
             }
         }
 
         private async Task<DialogTurnResult> GetSpecificBotAnswerAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
+            return await this.ForwardToQnADialog(stepContext, cancellationToken,"Bot-Hyderabad.tsv");
+        }
+
+        private async Task<DialogTurnResult> ForwardToQnADialog(WaterfallStepContext stepContext, CancellationToken cancellationToken, String knowleadgeBaseSource = null) {
+
             var reply = stepContext.Result as IMessageActivity;
 
             if (!string.IsNullOrEmpty(reply.Text))
             {
                 if (reply.Text.Equals("No Answer Found", StringComparison.InvariantCultureIgnoreCase))
                 {
-                    var knowleadgeBaseID = stepContext.Context.Activity.From.Id;
+                    //var knowleadgeBaseID = stepContext.Context.Activity.From.Id;
 
-                    return await stepContext.BeginDialogAsync(nameof(QuestionAnsweringDialog), "Bot-Hyderabad", cancellationToken);
+                    return await stepContext.BeginDialogAsync(nameof(QuestionAnsweringDialog),knowleadgeBaseSource,cancellationToken);
                 }
-                else {
+                else
+                {
                     await stepContext.Context.SendActivityAsync(reply, cancellationToken);
 
                     return await stepContext.EndDialogAsync(null, cancellationToken);
                 }
+
             }
-            else {
+            else
+            {
                 await stepContext.Context.SendActivityAsync(reply, cancellationToken);
 
                 return await stepContext.EndDialogAsync(null, cancellationToken);

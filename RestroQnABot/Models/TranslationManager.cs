@@ -15,10 +15,12 @@ namespace RestroQnABot.Models
     public class TranslationManager
     {
         private ITranslationClient _translationClient;
-       
+        private List<AdaptiveSubmitAction> _actions;
+
         public TranslationManager(ITranslationClient translationClient)
         {
             _translationClient = translationClient;
+            _actions = new List<AdaptiveSubmitAction>();
         }
 
         public async Task<string> GetTranslatedTextAsync(string utterance, string languageCode)
@@ -34,10 +36,26 @@ namespace RestroQnABot.Models
 
         public async Task<object> TranslateAdaptiveCard(object card, string userLanguage)
         {
+            dynamic  modifyCard = (AdaptiveCard) card;
+
+            foreach (var prop in modifyCard.Body)
+            {
+                if (prop is AdaptiveActionSet) {
+
+                    var actions = (List<AdaptiveAction>) prop.Actions;
+
+                    if (actions.Any(x => x.Id.Equals(userLanguage, StringComparison.InvariantCultureIgnoreCase)))
+                    {
+                        actions.RemoveAll(x => x.Id.Equals(userLanguage));
+
+                        prop.Actions = actions;
+                    }
+                }
+            }
 
             var propertiesToTranslate = new[] { "text", "altText", "fallbackText", "title", "placeholder", "data" };
 
-            var cardJObject = JObject.FromObject(card);
+            var cardJObject = JObject.FromObject(modifyCard);
             var list = new List<(JContainer Container, object Key, string Text)>();
 
             void recurseThroughJObject(JObject jObject)

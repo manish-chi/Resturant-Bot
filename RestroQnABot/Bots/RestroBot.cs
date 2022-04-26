@@ -38,7 +38,7 @@ namespace RestroQnABot.Bots
             _languageAccessor = userState.CreateProperty<string>("LanguagePreference");
             _languageManager = new LanguageManager(configuration, userState, new TranslationManager(new AzureTranslationClient(configuration)));
             _questionAnswerManager = new QuestionAnswerManager(new CustomQnAServiceClient(configuration)
-                , new AdaptiveCardManager(new TranslationManager(new AzureTranslationClient(configuration))));
+                , new AdaptiveCardManager());
 
         }
 
@@ -90,7 +90,7 @@ namespace RestroQnABot.Bots
                     if (Convert.ToBoolean(configuration["MultiLang"]))
                     {
                         var languageText = "change language";
-                        var reply = await _questionAnswerManager.GetAnswer(languageText, null);
+                        var reply = await _questionAnswerManager.GetAnswer(languageText);
                         await turnContext.SendActivityAsync(reply, cancellationToken);
 
                         await _welcomeAccessor.SetAsync(turnContext, true, cancellationToken);
@@ -108,7 +108,7 @@ namespace RestroQnABot.Bots
         {
             //showing welcome card after lang selection.
             var welcomeText = "welcome!";
-            var reply = await _questionAnswerManager.GetAnswer(welcomeText,null);
+            var reply = await _questionAnswerManager.GetAnswer(welcomeText);
             return reply;
         }
     }

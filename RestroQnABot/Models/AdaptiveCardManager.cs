@@ -1,5 +1,6 @@
 ﻿using AdaptiveCards;
 using Azure.AI.Language.QuestionAnswering;
+using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -15,33 +16,18 @@ namespace RestroQnABot.Models
 {
     public class AdaptiveCardManager
     {
-        private List<AdaptiveAction> _actions;
-        private TranslationManager _translationManager;
-
-        public AdaptiveCardManager(TranslationManager translationManager)
+        public AdaptiveCardManager()
         {
-            _translationManager = translationManager;
-            _actions = new List<AdaptiveAction>();
+
         }
 
         public Attachment FormatAdaptiveCard(Answer answer)
         {
-            AdaptiveCard card = null;
             // Parse the JSON 
             AdaptiveCardParseResult result = AdaptiveCard.FromJson(answer.answer);
             // Get card from result
 
-            card = result.Card;
-
-            var token = JToken.Parse(Convert.ToString(answer.metadata)) as JToken;
-            string lang = token["language"].Value<string>().Trim();
-
-            //if (answer.Metadata.Keys.Any(x => x.Equals("Language", StringComparison.InvariantCultureIgnoreCase)))
-            //{
-            //    _actions = card.Body.Select(x=>x..Where(x => x.Id.ToLower().Trim()  != userlangCode.ToLower().Trim()).ToList();
-
-            //    card.Actions = _actions;
-            //}
+            var card = result.Card;
 
             var adaptiveCardAttachment = new Attachment()
             {
@@ -49,6 +35,40 @@ namespace RestroQnABot.Models
                 Content = card,
             };
             return adaptiveCardAttachment;
+        }
+
+        public bool isInputTextAdaptiveCardOrNot(IMessageActivity activity)
+        {
+            if (String.IsNullOrEmpty(activity.Text) && activity.Value != null) //its an adaptive card
+            {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        public bool isLangAdaptiveCard(IMessageActivity activity)
+        { 
+            if (activity.Value != null)
+            {
+                string userSelectedLang = String.Empty;
+                var token = JToken.Parse(activity.Value.ToString());
+                userSelectedLang = token["code"].Value<string>().Trim();
+                if (!String.IsNullOrEmpty(userSelectedLang))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

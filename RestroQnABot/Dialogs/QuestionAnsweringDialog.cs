@@ -21,23 +21,12 @@ namespace RestroQnABot.Dialogs
             _languageStateProperty = userState.CreateProperty<string>("LanguagePreference");
             _questionAnswerManager = new QuestionAnswerManager(
                 new CustomQnAServiceClient(configuration),
-                new AdaptiveCardManager(new TranslationManager(new AzureTranslationClient(configuration))));
+                new AdaptiveCardManager());
         }
 
         public override async Task<DialogTurnResult> BeginDialogAsync(DialogContext outerDc, object options = null, CancellationToken cancellationToken = default)
         {
-
-            var knowleadgeBaseId = options as string;
-            var userLangCode = await _languageStateProperty.GetAsync(outerDc.Context, () => TranslationSettings.DefaultLanguage) ?? TranslationSettings.DefaultLanguage;
-
-            //If adaptive card has buttons then get the button values.
-            if (outerDc.Context.Activity.Text == null)
-            {
-                var token = JToken.Parse(outerDc.Context.Activity.Value.ToString());
-                outerDc.Context.Activity.Text = token["action"].Value<string>();
-            }
-
-            var reply = await _questionAnswerManager.GetAnswer(outerDc.Context.Activity.Text,knowleadgeBaseId);
+            var reply = await _questionAnswerManager.GetAnswer(outerDc.Context.Activity.Text,options as string);
 
             return await outerDc.EndDialogAsync(reply, cancellationToken);
         }

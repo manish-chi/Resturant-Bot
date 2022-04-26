@@ -33,23 +33,20 @@ namespace RestroQnABot.Utlities
         {
             try
             {
-                //Uri endpoint = new Uri($"{_endpoint}");
-                //AzureKeyCredential credential = new AzureKeyCredential(_key);
+               
                 string projectName = _projectName;
                 string deploymentName = _productionName;
 
-                //QuestionAnsweringClient client = new QuestionAnsweringClient(endpoint, credential);
-                //QuestionAnsweringProject project = new QuestionAnsweringProject(projectName, deploymentName);
-
                 var sourceFilters = new List<string>();
-                sourceFilters.Add(knowleadgeBaseSource);
+                sourceFilters.Add($"{knowleadgeBaseSource}");
 
                 var body = new CustomQnARequest()
                 {
                     question = question,
                     filters = new Filters()
                     {
-                        sourceFilter = null,
+                        sourceFilter = sourceFilters.ToArray(),
+                        logicalOperation = "AND"
                     }
                 };
 

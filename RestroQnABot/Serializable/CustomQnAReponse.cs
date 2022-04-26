@@ -18,16 +18,16 @@ namespace RestroQnABot.Serializable
         public float confidenceScore { get; set; }
         public int id { get; set; }
         public string source { get; set; }
-        public dynamic metadata { get; set; }
+        public MetaDataY metadata { get; set; }
         public Dialog dialog { get; set; }
         public Answerspan answerSpan { get; set; }
     }
 
-    //public class Metadatay
-    //{
-    //    public string key { get; set; }
-    //    public string value { get; set; }
-    //}
+    public class MetaDataY
+    {
+        public string system_metadata_qna_edited_manually { get; set; }
+        public string responsetype { get; set; }
+    }
 
     public class Dialog
     {
