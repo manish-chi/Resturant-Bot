@@ -27,66 +27,93 @@
 </head>
 
 <body>
-<div id="webchat" role="main"></div>
-<script type="text/javascript"
-        src="https://unpkg.com/markdown-it/dist/markdown-it.min.js"></script>
-<script src="https://cdn.botframework.com/botframework-webchat/master/webchat.js"></script>
-<script>
-    (async function () {
-        let { token, conversationId } = sessionStorage;
+    <!--<iframe src='https://webchat.botframework.com/embed/RBot2022Bot?s=9JynVTUo6As.OZDLJMTWlJTLyC6xGxwbfSOHNYqXFputIfwqdkqFBBQ' style='min-width: 400px; width: 100%; min-height: 500px;'></iframe>
+    <div id="webchat" role="main"></div>
+    <script type="text/javascript"
+            src="https://unpkg.com/markdown-it/dist/markdown-it.min.js"></script>
+    <script src="https://cdn.botframework.com/botframework-webchat/master/webchat.js"></script>-->
+    <div id="webchat" role="main"></div>
+    <script type="text/javascript"
+            src="https://unpkg.com/markdown-it/dist/markdown-it.min.js"></script>
+    <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
+    <script>
+        (async function () {
+            let { conversationId } = window.sessionStorage;
 
-        if (!token) {
-            const res = await fetch('https://directline.botframework.com/v3/directline/tokens/generate', { method: 'POST', headers: { 'Authorization': 'Bearer  6-VElXBA6ww.kN-OI_J03pClrpS8XjLgAc9nuKiXASomR20z1AMcaPc' } });
-            const { token: directLineToken } = await res.json();
+            if (!conversationId) {
 
-            sessionStorage['token'] = directLineToken;
-            token = directLineToken;
-        }
+                const res = await fetch(`https://directline.botframework.com/v3/directline/conversations/${conversationId}`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                    },
+                });
 
-        if (conversationId) {
-            const res = await fetch(`https://directline.botframework.com/v3/directline/conversations/${conversationId}`, {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                },
+                let { conversationId } = await res.json();
+                sessionStorage['conversationId'] = conversationId;
+            }
+            else {
+
+                var myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+                myHeaders.append("Authorization", "Bearer Y5Q8eF-nQpg.eAaDdLhXgVaQIxspU1x3KemsfdKFbTR7x2IcnKUL0s8");
+
+                var raw = JSON.stringify({
+                    "user": {
+                        "id": "dl_bot",
+                        "name": "Bot-Hyderabad"
+                    },
+                    "trustedOrigins": [
+                        "string"
+                    ]
+                });
+
+                var requestOptions = {
+                    method: 'POST',
+                    headers: myHeaders,
+                    body: raw,
+                    redirect: 'follow'
+                };
+
+                const res = await fetch('https://directline.botframework.com/v3/directline/tokens/generate', requestOptions);
+                const { token: directLineToken, conversationId } = await res.json();
+
+                token = directLineToken;
+                sessionStorage.conversationId = conversationId;
+            }
+
+            const store = window.WebChat.createStore({}, ({ dispatch }) => next => action => {
+                if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
+                    // When we receive DIRECT_LINE/CONNECT_FULFILLED action, we will send an event activity using WEB_CHAT/SEND_EVENT
+                    dispatch({
+                        type: 'WEB_CHAT/SEND_EVENT',
+                        payload: {
+                            name: 'webchat/join',
+                            value: { language: window.navigator.language }
+                        }
+                    });
+                }
+                return next(action);
             });
 
-            let { conversationId } = await res.json();
-            sessionStorage['conversationId'] = conversationId;
-        }
 
-        const store = window.WebChat.createStore({}, ({ dispatch }) => next => action => {
-            if (action.type === 'DIRECT_LINE/CONNECT_FULFILLED') {
-                // When we receive DIRECT_LINE/CONNECT_FULFILLED action, we will send an event activity using WEB_CHAT/SEND_EVENT
-                dispatch({
-                    type: 'WEB_CHAT/SEND_EVENT',
-                    payload: {
-                        name: 'webchat/join',
-                        value: { language: window.navigator.language }
-                    }
-                });
-            }
-            return next(action);
-        });
+            window.WebChat.renderWebChat(
+                {
+                    directLine: window.WebChat.createDirectLine({
+                        token: token
+                    }),
+                    userID: 'YOUR_USER_ID',
+                    username: 'Web Chat User',
+                    locale: 'en-US',
+                    botAvatarInitials: 'WC',
+                    userAvatarInitials: 'WW',
+                    store
+                },
+                document.getElementById('webchat')
+            );
 
 
-        window.WebChat.renderWebChat(
-            {
-                directLine: window.WebChat.createDirectLine({
-                    token: token
-                }),
-                userID: 'YOUR_USER_ID',
-                username: 'Web Chat User',
-                locale: 'en-US',
-                botAvatarInitials: 'WC',
-                userAvatarInitials: 'WW',
-                store
-            },
-            document.getElementById('webchat')
-        );
-
-
-    })().catch(err => console.error(err));
-</script>
+        })().catch(err => console.error(err));
+    </script>
 </body>
 </html>

@@ -28,23 +28,34 @@ namespace RestroQnABot.Models
 
             var response = await _questionAnswer.GetAnswers(question, knowleadgeBaseId);
 
-            if (response.answers.Count() > 0) 
+            if (response.answers.Count() > 0)
             {
-                if (!String.IsNullOrEmpty(response.answers[0].metadata.responsetype))
+                if (response.answers[0].dialog.prompts.Count() > 0)
                 {
-                    var card = _adaptiveCardManager.FormatAdaptiveCard(response.answers[0]);
+                    var attachment = _adaptiveCardManager.buildAdaptiveCard(response.answers[0].questions[0],
+                        response.answers[0].answer, response.answers[0].dialog.prompts.ToList());
 
-                    return MessageFactory.Attachment(card);
+                    return MessageFactory.Attachment(attachment);
+
                 }
                 else
                 {
-                    return MessageFactory.Text(response.answers[0].answer);
+                    if (!String.IsNullOrEmpty(response.answers[0].metadata.responsetype))
+                    {
+                        var attachment = _adaptiveCardManager.FormatAdaptiveCard(response.answers[0]);
+
+                        return MessageFactory.Attachment(attachment);
+                    }
+                    else
+                    {
+                        return MessageFactory.Text(response.answers[0].answer);
+                    }
                 }
             }
             else
             {
                 return MessageFactory.Text(response.answers[0].answer);
             }
-}
+        }
     }
 }

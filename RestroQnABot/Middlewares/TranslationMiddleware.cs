@@ -126,11 +126,7 @@ namespace RestroQnABot.Middlewares
 
                         var card = AdaptiveCard.FromJson(translatedCard.ToString()).Card;
 
-                        activity.Attachments.Add(new Attachment()
-                        {
-                            ContentType = "application/vnd.microsoft.card.adaptive",
-                            Content = card,
-                        });
+                        activity.Attachments[0].Content = card;
 
                     }
                     else

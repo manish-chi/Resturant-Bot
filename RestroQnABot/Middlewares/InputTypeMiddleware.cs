@@ -26,26 +26,10 @@ namespace RestroQnABot.Middlewares
         public async Task OnTurnAsync(ITurnContext turnContext, NextDelegate next, CancellationToken cancellationToken = default(CancellationToken))
         {
 
-            //check if the input type is adaptive card or not.
-            bool isAdaptive = _adaptiveCard.isInputTextAdaptiveCardOrNot(turnContext.Activity);
+            //check if the input message is from adaptive card or not and set to the activity.text property.
+            _adaptiveCard.SetAdaptiveButtonValueToText(turnContext.Activity);
 
-            if (isAdaptive)
-            {
-               bool isLangAdaptive =  _adaptiveCard.isLangAdaptiveCard(turnContext.Activity);
-
-                if (isLangAdaptive)
-                {
-                    await next.Invoke(cancellationToken);
-                }
-                else {
-                    var token = JToken.Parse(turnContext.Activity.Value.ToString());
-                    turnContext.Activity.Text = token["action"].Value<string>();
-                    await next.Invoke(cancellationToken);
-                }
-            }
-            else {
-                await next.Invoke(cancellationToken);
-            }
+            await next.Invoke(cancellationToken);
         }
     }
 }

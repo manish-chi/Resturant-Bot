@@ -5,6 +5,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <ActiveDebugProfile>IIS Express</ActiveDebugProfile>
-    <NameOfLastUsedPublishProfile>C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\Properties\PublishProfiles\RBot2022-new - FTP.pubxml</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\Properties\PublishProfiles\RBot2022-new - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

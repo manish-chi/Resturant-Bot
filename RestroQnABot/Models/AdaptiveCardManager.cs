@@ -29,27 +29,72 @@ namespace RestroQnABot.Models
 
             var card = result.Card;
 
+            return this.ReturnAdaptiveCardAttachement(card);
+        }
+
+
+        private Attachment ReturnAdaptiveCardAttachement(AdaptiveCard card) {
+
             var adaptiveCardAttachment = new Attachment()
             {
                 ContentType = "application/vnd.microsoft.card.adaptive",
                 Content = card,
             };
+
             return adaptiveCardAttachment;
         }
 
-        public bool isInputTextAdaptiveCardOrNot(IMessageActivity activity)
+        public void SetAdaptiveButtonValueToText(IMessageActivity activity)
         {
             if (String.IsNullOrEmpty(activity.Text) && activity.Value != null) //its an adaptive card
             {
-                return true;
-            }
-            else {
-                return false;
+                var token = JToken.Parse(activity.Value.ToString());
+
+                if (token.SelectToken("action") != null) {
+
+                    var action = token["action"].Value<string>() ?? null;
+
+                    if (!string.IsNullOrEmpty(action))
+                    {
+                        activity.Text = action;
+                    }
+                }
             }
         }
 
+        public Attachment buildAdaptiveCard(string question,string title,List<Prompt> prompts) {
+
+            var adaptiveElements = new List<AdaptiveElement>();
+            var submitActions = new List<AdaptiveAction>();
+
+            var textBlock = new AdaptiveTextBlock() {
+                Text = title,
+                Wrap = true,
+            };
+
+            foreach(var prompt in prompts) {
+
+                submitActions.Add(new AdaptiveSubmitAction()
+                {
+                    Title = prompt.displayText,
+                    Id = prompt.displayText,
+                    Data = $"{prompt.displayText}",
+                    DataJson = JsonConvert.SerializeObject(new { action = $"{question} {prompt.displayText}"})
+                });
+            }
+
+            adaptiveElements.Add(textBlock);
+
+            var card = new AdaptiveCard("1.3");
+            card.Body = adaptiveElements;
+            card.Actions = submitActions;
+            card.Type = AdaptiveCard.TypeName;
+
+            return this.ReturnAdaptiveCardAttachement(card);
+        }
+
         public bool isLangAdaptiveCard(IMessageActivity activity)
-        { 
+        {
             if (activity.Value != null)
             {
                 string userSelectedLang = String.Empty;

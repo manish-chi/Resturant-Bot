@@ -38,20 +38,7 @@ namespace RestroQnABot.Models
         {
             dynamic  modifyCard = (AdaptiveCard) card;
 
-            foreach (var prop in modifyCard.Body)
-            {
-                if (prop is AdaptiveActionSet) {
-
-                    var actions = (List<AdaptiveAction>) prop.Actions;
-
-                    if (actions.Any(x => x.Id.Equals(userLanguage, StringComparison.InvariantCultureIgnoreCase)))
-                    {
-                        actions.RemoveAll(x => x.Id.Equals(userLanguage));
-
-                        prop.Actions = actions;
-                    }
-                }
-            }
+            this.ModifyLangOptions(modifyCard,userLanguage);
 
             var propertiesToTranslate = new[] { "text", "altText", "fallbackText", "title", "placeholder", "data" };
 
@@ -135,6 +122,27 @@ namespace RestroQnABot.Models
 
             // Return the modified JObject representing the Adaptive Card
             return cardJObject;
+        }
+
+        private void ModifyLangOptions(dynamic modifyCard,string userLanguage)
+        {
+            foreach (var prop in modifyCard.Body)
+            {
+                if (prop is AdaptiveActionSet)
+                {
+                    var actions = (List<AdaptiveAction>)prop.Actions;
+
+                    if (actions != null) {
+
+                        if (actions.Any(x => x.Id.Equals(userLanguage, StringComparison.InvariantCultureIgnoreCase)))
+                        {
+                            actions.RemoveAll(x => x.Id.Equals(userLanguage));
+
+                            prop.Actions = actions;
+                        }
+                    }
+                }
+            }
         }
     }
 }

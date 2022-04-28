@@ -7,5 +7,150 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
     <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA5CNQMdBX0UKnhzhpcMQGKAAAAAACAAAAAAAQZgAAAAEAACAAAACYzb0gAgucaIcQTkd/7MkPOg5DrORMfrqufEpxi1D80QAAAAAOgAAAAAIAACAAAABvSzPFveGjCvALueUV2lYScIi4PSaGLxf9JfGFy8fMn4AAAAD2FWiCruXjyauk2WM2ASImDTdYT16lxYBrAkoNl6pjXULn2n6LyViAMtYo9vKiiaDLjQ9keFRNq5jWQwmqtbNcF1aezS0OWx3/1RQRKaHeqmx8iatCpbe3c6bqL0nL8jssYbcQNS3j2Y7T1d4P1Mty5vXTUmS/4TPG6IMoeZcFREAAAABYwLsudpWeZoTM8EDZTmVjb/V6V3+oweKvYgBQx6AkOZSrF6hcr5tZOQmaI3ZOSWAONQzVlMdhzAQhw7yAN86M</EncryptedPassword>
+    <History>False|2022-04-27T06:01:12.5976892Z;</History>
+    <_PublishTargetUrl>ftp://waws-prod-dm1-287.ftp.azurewebsites.windows.net/site/wwwroot</_PublishTargetUrl>
   </PropertyGroup>
+  <ItemGroup>
+    <File Include="AdaptiveCards.dll">
+      <publishTime>11/23/2021 20:06:30</publishTime>
+    </File>
+    <File Include="AdaptiveExpressions.dll">
+      <publishTime>04/14/2022 16:34:44</publishTime>
+    </File>
+    <File Include="Antlr4.Runtime.Standard.dll">
+      <publishTime>01/18/2020 18:40:24</publishTime>
+    </File>
+    <File Include="appsettings.Development.json">
+      <publishTime>04/15/2022 20:51:10</publishTime>
+    </File>
+    <File Include="appsettings.json">
+      <publishTime>04/27/2022 11:27:25</publishTime>
+    </File>
+    <File Include="Azure.AI.Language.QuestionAnswering.dll">
+      <publishTime>11/03/2021 00:46:58</publishTime>
+    </File>
+    <File Include="Azure.Core.dll">
+      <publishTime>04/04/2022 21:38:52</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.JsonPatch.dll">
+      <publishTime>12/16/2019 02:04:44</publishTime>
+    </File>
+    <File Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll">
+      <publishTime>12/16/2019 02:17:30</publishTime>
+    </File>
+    <File Include="Microsoft.Azure.Services.AppAuthentication.dll">
+      <publishTime>02/08/2021 18:59:40</publishTime>
+    </File>
+    <File Include="Microsoft.Bcl.AsyncInterfaces.dll">
+      <publishTime>04/14/2020 22:39:12</publishTime>
+    </File>
+    <File Include="Microsoft.Bot.Builder.AI.QnA.dll">
+      <publishTime>04/14/2022 16:34:44</publishTime>
+    </File>
+    <File Include="Microsoft.Bot.Builder.Dialogs.Declarative.dll">
+      <publishTime>04/14/2022 16:34:44</publishTime>
+    </File>
+    <File Include="Microsoft.Bot.Builder.Dialogs.dll">
+      <publishTime>04/14/2022 16:34:44</publishTime>
+    </File>
+    <File Include="Microsoft.Bot.Builder.dll">
+      <publishTime>04/14/2022 16:34:44</publishTime>
+    </File>
+    <File Include="Microsoft.Bot.Builder.Integration.AspNet.Core.dll">
+      <publishTime>02/07/2022 18:28:06</publishTime>
+    </File>
+    <File Include="Microsoft.Bot.Configuration.dll">
+      <publishTime>04/14/2022 16:34:44</publishTime>
+    </File>
+    <File Include="Microsoft.Bot.Connector.dll">
+      <publishTime>04/14/2022 16:34:44</publishTime>
+    </File>
+    <File Include="Microsoft.Bot.Connector.Streaming.dll">
+      <publishTime>04/14/2022 16:34:44</publishTime>
+    </File>
+    <File Include="Microsoft.Bot.Schema.dll">
+      <publishTime>04/14/2022 16:37:44</publishTime>
+    </File>
+    <File Include="Microsoft.Bot.Streaming.dll">
+      <publishTime>04/14/2022 16:34:44</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Configuration.Abstractions.dll">
+      <publishTime>11/22/2021 03:01:56</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Configuration.Binder.dll">
+      <publishTime>11/22/2021 03:03:30</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Configuration.dll">
+      <publishTime>11/22/2021 03:03:30</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Configuration.FileExtensions.dll">
+      <publishTime>11/22/2021 03:03:26</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Configuration.Json.dll">
+      <publishTime>11/22/2021 03:03:38</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.DependencyInjection.Abstractions.dll">
+      <publishTime>11/22/2021 03:02:02</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.DependencyInjection.dll">
+      <publishTime>11/22/2021 03:01:56</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.FileProviders.Abstractions.dll">
+      <publishTime>11/22/2021 03:02:10</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.FileProviders.Physical.dll">
+      <publishTime>11/22/2021 03:02:34</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.FileSystemGlobbing.dll">
+      <publishTime>11/22/2021 03:03:24</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Http.dll">
+      <publishTime>11/22/2021 03:04:58</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Logging.Abstractions.dll">
+      <publishTime>11/22/2021 03:02:26</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Logging.dll">
+      <publishTime>11/22/2021 03:04:18</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Options.dll">
+      <publishTime>11/22/2021 03:01:50</publishTime>
+    </File>
+    <File Include="Microsoft.Extensions.Primitives.dll">
+      <publishTime>11/22/2021 03:02:10</publishTime>
+    </File>
+    <File Include="Microsoft.Identity.Client.dll">
+      <publishTime>10/20/2021 17:14:50</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.Clients.ActiveDirectory.dll">
+      <publishTime>11/02/2019 03:35:36</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.JsonWebTokens.dll">
+      <publishTime>10/18/2019 23:39:24</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.Logging.dll">
+      <publishTime>10/18/2019 23:40:20</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.Protocols.dll">
+      <publishTime>10/18/2019 23:41:02</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.Protocols.OpenIdConnect.dll">
+      <publishTime>10/18/2019 23:48:48</publishTime>
+    </File>
+    <File Include="Microsoft.IdentityModel.Tokens.dll">
+      <publishTime>10/18/2019 23:43:40</publishTime>
+    </File>
+    <File Include="Microsoft.Recognizers.Definitions.dll">
+      <publishTime>02/27/2020 05:49:02</publishTime>
+    </File>
+    <File Include="Microsoft.Recognizers.Text.Choice.dll">
+      <publishTime>02/27/2020 05:48:48</publishTime>
+    </File>
+    <File Include="Microsoft.Recognizers.Text.DataTypes.TimexExpression.dll">
+      <publishTime>02/27/2020 05:48:46</publishTime>
+    </File>
+    <File Include="Microsoft.Recognizers.Text.DateTime.dll">
+      <publishTime>02/27/2020 05:48:50</publishTime>
+    </File>
+  </ItemGroup>
 </Project>

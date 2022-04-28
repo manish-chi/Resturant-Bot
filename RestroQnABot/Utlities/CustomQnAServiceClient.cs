@@ -33,22 +33,7 @@ namespace RestroQnABot.Utlities
         {
             try
             {
-               
-                string projectName = _projectName;
-                string deploymentName = _productionName;
-
-                var sourceFilters = new List<string>();
-                sourceFilters.Add($"{knowleadgeBaseSource}");
-
-                var body = new CustomQnARequest()
-                {
-                    question = question,
-                    filters = new Filters()
-                    {
-                        sourceFilter = sourceFilters.ToArray(),
-                        logicalOperation = "AND"
-                    }
-                };
+                var body = this.createBodywithSourceFilters(question,knowleadgeBaseSource);
 
                 var requestBody = JsonConvert.SerializeObject(body);
 
@@ -81,6 +66,24 @@ namespace RestroQnABot.Utlities
                 Console.WriteLine(ex.Message);
                 return null;
             }
+        }
+
+        private CustomQnARequest createBodywithSourceFilters(string question,string knowleadgeBaseSource)
+        {
+            var sourceFilters = new List<string>();
+            sourceFilters.Add($"{knowleadgeBaseSource}");
+
+            var body = new CustomQnARequest()
+            {
+                question = question,
+                filters = new Filters()
+                {
+                    sourceFilter = sourceFilters.ToArray(),
+                    logicalOperation = "AND"
+                }
+            };
+
+            return body;
         }
     }
 }
