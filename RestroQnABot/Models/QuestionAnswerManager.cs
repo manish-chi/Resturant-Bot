@@ -30,27 +30,39 @@ namespace RestroQnABot.Models
 
             if (response.answers.Count() > 0)
             {
-                if (response.answers[0].dialog.prompts.Count() > 0)
+                if (response.answers[0].dialog != null)
                 {
-                    var attachment = _adaptiveCardManager.buildAdaptiveCard(response.answers[0].questions[0],
-                        response.answers[0].answer, response.answers[0].dialog.prompts.ToList());
-
-                    return MessageFactory.Attachment(attachment);
-
-                }
-                else
-                {
-                    if (!String.IsNullOrEmpty(response.answers[0].metadata.responsetype))
+                    if (response.answers[0].dialog.prompts.Count() > 0)
                     {
-                        var attachment = _adaptiveCardManager.FormatAdaptiveCard(response.answers[0]);
+                        var attachment = _adaptiveCardManager.buildAdaptiveCard(response.answers[0].questions[0],
+                          response.answers[0].answer, response.answers[0].dialog.prompts.ToList());
 
                         return MessageFactory.Attachment(attachment);
                     }
-                    else
-                    {
-                        return MessageFactory.Text(response.answers[0].answer);
+                    else {
+
+                        return AdaptiveReponseTypeMessage(response);
                     }
                 }
+                else
+                {
+                    return AdaptiveReponseTypeMessage(response);
+                }
+            }
+            else
+            {
+                return MessageFactory.Text(response.answers[0].answer);
+            }
+        }
+
+        private IMessageActivity AdaptiveReponseTypeMessage(CustomQnAResponse response)
+        {
+            if (!String.IsNullOrEmpty(response.answers[0].metadata.responsetype)
+                        && String.Equals(response.answers[0].metadata.responsetype, "adaptivecard", StringComparison.InvariantCultureIgnoreCase))
+            {
+                var attachment = _adaptiveCardManager.FormatAdaptiveCard(response.answers[0]);
+
+                return MessageFactory.Attachment(attachment);
             }
             else
             {

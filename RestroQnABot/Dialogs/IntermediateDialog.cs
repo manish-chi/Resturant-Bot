@@ -22,7 +22,7 @@ namespace RestroQnABot.Dialogs
                 GetCommonBotAnswerAsync,
                 GetSpecificBotAnswerAsync,
                 GetNoAnswerFoundAsync,
-                FinalStepAsync,
+                //FinalStepAsync,
             };
             Dialogs.Add(new WaterfallDialog("waterfallsteps", steps));
             Dialogs.Add(new QuestionAnsweringDialog(configuration,userState));

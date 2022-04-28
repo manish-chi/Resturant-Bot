@@ -16,7 +16,7 @@
 
         #webchat {
             height: 100%;
-            width: 40%;
+            width: 90%;
         }
 
             #webchat > * {
@@ -37,10 +37,16 @@
             src="https://unpkg.com/markdown-it/dist/markdown-it.min.js"></script>
     <script src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
     <script>
+       
         (async function () {
-            let { conversationId } = window.sessionStorage;
 
-            if (!conversationId) {
+            let conversationId;
+            let token;
+
+            conversationId = window.sessionStorage["conversationId"];
+            token = window.sessionStorage["token"];
+
+            if (conversationId != undefined) {
 
                 const res = await fetch(`https://directline.botframework.com/v3/directline/conversations/${conversationId}`, {
                     method: 'GET',
@@ -49,8 +55,8 @@
                     },
                 });
 
-                let { conversationId } = await res.json();
-                sessionStorage['conversationId'] = conversationId;
+                let { conversation_Id } = await res.json();
+                sessionStorage['conversationId'] = conversation_Id;
             }
             else {
 
@@ -76,10 +82,11 @@
                 };
 
                 const res = await fetch('https://directline.botframework.com/v3/directline/tokens/generate', requestOptions);
-                const { token: directLineToken, conversationId } = await res.json();
+                const { token: directLineToken, conversation_Id } = await res.json();
 
                 token = directLineToken;
-                sessionStorage.conversationId = conversationId;
+                sessionStorage.conversationId = conversation_Id;
+                sessionStorage.token = token;
             }
 
             const store = window.WebChat.createStore({}, ({ dispatch }) => next => action => {
