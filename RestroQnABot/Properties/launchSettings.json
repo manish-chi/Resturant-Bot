@@ -16,12 +16,20 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "EchoBot": {
+    "EchoBot-Developement": {
       "commandName": "Project",
       "launchBrowser": true,
       "applicationUrl": "https://localhost:3979;http://localhost:3978",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "EchoBot-Production": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:3979;http://localhost:3978",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Production"
       }
     }
   }

@@ -21,9 +21,15 @@ namespace RestroQnABot
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
+        public Startup(IConfiguration configuration,IWebHostEnvironment env) {
+
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: false)
+                .AddEnvironmentVariables();
+           
+            
+            Configuration = builder.Build();
         }
 
         public IConfiguration Configuration { get; }
@@ -33,6 +39,9 @@ namespace RestroQnABot
         {
             services.AddHttpClient().AddControllers().AddNewtonsoftJson();
 
+            services.Configure<AppSettings>(Configuration.GetSection("ApplicationSettings"));
+
+            //services.AddSingleton<AppSettings>();
             // Create the Bot Framework Authentication to be used with the Bot Adapter.
             services.AddSingleton<BotFrameworkAuthentication, ConfigurationBotFrameworkAuthentication>();
 
@@ -44,7 +53,7 @@ namespace RestroQnABot
             services.AddSingleton<UserState>();
             // Create the Conversation state. (Used by the Dialog system itself.)
             services.AddSingleton<ConversationState>();
-
+           
             services.AddSingleton<InputTypeMiddleWare>();
 
             services.AddSingleton<TranslationMiddleWare>();

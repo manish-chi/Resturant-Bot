@@ -1,5 +1,6 @@
 ﻿using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 using RestroQnABot.Interfaces;
 using RestroQnABot.Serializable;
@@ -15,16 +16,18 @@ namespace RestroQnABot.Models
     {
         private IQuestionAnswer _questionAnswer;
         private AdaptiveCardManager _adaptiveCardManager;
-        public QuestionAnswerManager(IQuestionAnswer questionAnswer, AdaptiveCardManager adaptiveCardManager)
+        protected string CommonKnowleageBaseId = String.Empty;
+        public QuestionAnswerManager(IConfiguration configuration,IQuestionAnswer questionAnswer, AdaptiveCardManager adaptiveCardManager)
         {
             _questionAnswer = questionAnswer;
             _adaptiveCardManager = adaptiveCardManager;
+            CommonKnowleageBaseId = configuration[nameof(CommonKnowleageBaseId)];
         }
 
         public async Task<IMessageActivity> GetAnswer(string question, string knowleadgeBaseId = null)
         {
 
-            knowleadgeBaseId = String.IsNullOrEmpty(knowleadgeBaseId) ? "Editorial" : knowleadgeBaseId;
+            knowleadgeBaseId = String.IsNullOrEmpty(knowleadgeBaseId) ? CommonKnowleageBaseId : knowleadgeBaseId;
 
             var response = await _questionAnswer.GetAnswers(question, knowleadgeBaseId);
 

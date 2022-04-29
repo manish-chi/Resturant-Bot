@@ -39,11 +39,16 @@ namespace RestroQnABot.Utlities
                         request.Headers.Add("Ocp-Apim-Subscription-Region", "eastus");
                         // Send the request and get response.
                         HttpResponseMessage response = await client.SendAsync(request).ConfigureAwait(false);
-                        // Read response as a string.
-                        string result = await response.Content.ReadAsStringAsync();
-                        var deserializedOutput = JsonConvert.DeserializeObject<LanguageResult[]>(result);
 
-                        return deserializedOutput[0].language;
+                        if (response.IsSuccessStatusCode) {
+                            // Read response as a string.
+                            string result = await response.Content.ReadAsStringAsync();
+                            var deserializedOutput = JsonConvert.DeserializeObject<LanguageResult[]>(result);
+
+                            return deserializedOutput[0].language;
+                        }
+
+                        throw new Exception(response.ReasonPhrase);
                     }
                 }
             }

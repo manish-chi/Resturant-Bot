@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 using RestroQnABot.Models;
 using RestroQnABot.Utlities;
+using RestroQnABot.ConstantsLitrals;
 
 namespace RestroQnABot.Bots
 {
@@ -26,6 +27,8 @@ namespace RestroQnABot.Bots
         private LanguageManager _languageManager;
         private IStatePropertyAccessor<bool> _welcomeAccessor;
         private readonly IStatePropertyAccessor<string> _languageAccessor;
+        protected string WelcomePrompt = String.Empty;
+        protected string ChangeLanguagePrompt = String.Empty;
         protected UserState userState;
         protected ConversationState conversationState;
         public RestroBot(IConfiguration configuration, T dialog, UserState userState, ConversationState conversationState)
@@ -33,12 +36,17 @@ namespace RestroQnABot.Bots
             this.configuration = configuration;
             this.userState = userState;
             this.dialog = dialog;
+
             this.conversationState = conversationState;
             _welcomeAccessor = userState.CreateProperty<bool>("welcome");
             _languageAccessor = userState.CreateProperty<string>("LanguagePreference");
+
             _languageManager = new LanguageManager(configuration, userState, new TranslationManager(new AzureTranslationClient(configuration)));
-            _questionAnswerManager = new QuestionAnswerManager(new CustomQnAServiceClient(configuration)
+            _questionAnswerManager = new QuestionAnswerManager(configuration,new CustomQnAServiceClient(configuration)
                 , new AdaptiveCardManager());
+
+            WelcomePrompt = configuration["WelcomePrompt"];
+            ChangeLanguagePrompt = configuration["ChangeLanguagePrompt"];
 
         }
 
@@ -64,7 +72,7 @@ namespace RestroQnABot.Bots
 
                 var userLangCode = await _languageAccessor.GetAsync(turnContext, () => TranslationSettings.DefaultLanguage) ?? TranslationSettings.DefaultLanguage;
 
-                var welcomeReply = await this.WelcomeCard(userLangCode);
+                var welcomeReply = await this.WelcomeCard();
 
                 await turnContext.SendActivityAsync(welcomeReply, cancellationToken);
 
@@ -90,7 +98,7 @@ namespace RestroQnABot.Bots
                 {
                     if (Convert.ToBoolean(configuration["MultiLang"]))
                     {
-                        var languageText = "change language";
+                        var languageText = ChangeLanguagePrompt;
                         var reply = await _questionAnswerManager.GetAnswer(languageText);
                         await turnContext.SendActivityAsync(reply, cancellationToken);
 
@@ -98,17 +106,17 @@ namespace RestroQnABot.Bots
                     }
                     else
                     {
-                        var reply = await this.WelcomeCard(userLangCode);
+                        var reply = await this.WelcomeCard();
                         await turnContext.SendActivityAsync(reply, cancellationToken);
                     }
                 }
             }
         }
 
-        private async Task<IMessageActivity> WelcomeCard(string userLangCode)
+        private async Task<IMessageActivity> WelcomeCard()
         {
             //showing welcome card after lang selection.
-            var welcomeText = "welcome!";
+            var welcomeText = WelcomePrompt;
             var reply = await _questionAnswerManager.GetAnswer(welcomeText);
             return reply;
         }

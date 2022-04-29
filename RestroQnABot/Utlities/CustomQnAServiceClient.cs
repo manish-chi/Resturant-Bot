@@ -8,6 +8,7 @@ using RestroQnABot.Serializable;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -49,11 +50,17 @@ namespace RestroQnABot.Utlities
                         request.Headers.Add("Ocp-Apim-Subscription-Region", "eastus");
                         // Send the request and get response.
                         HttpResponseMessage response = await client.SendAsync(request).ConfigureAwait(false);
+
+                        if (response.IsSuccessStatusCode){
+
+                            string result = await response.Content.ReadAsStringAsync();
+
+                            var deserializedOutput = JsonConvert.DeserializeObject<CustomQnAResponse>(result);
+
+                            return deserializedOutput;
+                        }
                         // Read response as a string.
-                        string result = await response.Content.ReadAsStringAsync();
-                        var deserializedOutput = JsonConvert.DeserializeObject<CustomQnAResponse>(result);
-   
-                        return deserializedOutput;
+                        throw new Exception(response.ReasonPhrase);
                     }
                 }
 
@@ -63,7 +70,7 @@ namespace RestroQnABot.Utlities
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Debug.WriteLine(ex.Message);
                 return null;
             }
         }

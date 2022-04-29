@@ -2,6 +2,7 @@ C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubT
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\wwwroot\default.htm
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.Development.json
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.json
+C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\appsettings.Production.json
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\DeploymentTemplates\new-rg-parameters.json
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\DeploymentTemplates\preexisting-rg-parameters.json
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\DeploymentTemplates\template-with-new-rg.json

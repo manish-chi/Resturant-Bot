@@ -19,7 +19,7 @@ namespace RestroQnABot.Dialogs
         public QuestionAnsweringDialog(IConfiguration configuration,UserState userState)
         {
             _languageStateProperty = userState.CreateProperty<string>("LanguagePreference");
-            _questionAnswerManager = new QuestionAnswerManager(
+            _questionAnswerManager = new QuestionAnswerManager(configuration,
                 new CustomQnAServiceClient(configuration),
                 new AdaptiveCardManager());
         }
