@@ -17,19 +17,43 @@ namespace RestroQnABot.Models
         private IQuestionAnswer _questionAnswer;
         private AdaptiveCardManager _adaptiveCardManager;
         protected string CommonKnowleageBaseId = String.Empty;
+        private CustomQnAResponse _response;
         public QuestionAnswerManager(IConfiguration configuration,IQuestionAnswer questionAnswer, AdaptiveCardManager adaptiveCardManager)
         {
+            _response = new CustomQnAResponse();
             _questionAnswer = questionAnswer;
             _adaptiveCardManager = adaptiveCardManager;
             CommonKnowleageBaseId = configuration[nameof(CommonKnowleageBaseId)];
         }
 
-        public async Task<IMessageActivity> GetAnswer(string question, string knowleadgeBaseId = null)
+        public async Task<IMessageActivity> GetAnswerFromMultipleKb(string question, List<string> knowleadgeBaseSources)
         {
 
-            knowleadgeBaseId = String.IsNullOrEmpty(knowleadgeBaseId) ? CommonKnowleageBaseId : knowleadgeBaseId;
+            foreach (var kbSource in knowleadgeBaseSources){
 
-            var response = await _questionAnswer.GetAnswers(question, knowleadgeBaseId);
+                _response = await _questionAnswer.GetAnswers(question, kbSource);
+
+                if (_response.answers[0].confidenceScore > 0.85)
+                {
+                    break;
+                }
+                else {
+
+                    continue;
+                }
+            }
+
+            return this.GetQnAResponse(question, _response);
+        }
+
+        public async Task<IMessageActivity> GetAnswerFromSingleKb(string question, string knowleadgeBaseSource) {
+
+            _response = await _questionAnswer.GetAnswers(question,knowleadgeBaseSource);
+
+            return this.GetQnAResponse(question, _response);
+        }
+
+        private IMessageActivity GetQnAResponse(string question, CustomQnAResponse response) {
 
             if (response.answers.Count() > 0)
             {
@@ -42,7 +66,8 @@ namespace RestroQnABot.Models
 
                         return MessageFactory.Attachment(attachment);
                     }
-                    else {
+                    else
+                    {
 
                         return AdaptiveReponseTypeMessage(response);
                     }

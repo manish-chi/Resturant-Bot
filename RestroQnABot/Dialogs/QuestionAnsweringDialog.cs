@@ -1,5 +1,6 @@
 ﻿using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
+using Microsoft.Bot.Schema;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
 using RestroQnABot.Models;
@@ -26,7 +27,18 @@ namespace RestroQnABot.Dialogs
 
         public override async Task<DialogTurnResult> BeginDialogAsync(DialogContext outerDc, object options = null, CancellationToken cancellationToken = default)
         {
-            var reply = await _questionAnswerManager.GetAnswer(outerDc.Context.Activity.Text,options as string);
+            Activity reply = new Activity();
+
+            var knowleageBaseCollection = options as List<string>;
+
+            if (knowleageBaseCollection.Count() > 0)
+            {
+                 reply = (Activity) await _questionAnswerManager.GetAnswerFromMultipleKb(outerDc.Context.Activity.Text, knowleageBaseCollection);
+
+            }
+            else {
+                reply = (Activity) await _questionAnswerManager.GetAnswerFromSingleKb(outerDc.Context.Activity.Text, knowleageBaseCollection[0]);
+            }
 
             return await outerDc.EndDialogAsync(reply, cancellationToken);
         }

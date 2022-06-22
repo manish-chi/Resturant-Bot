@@ -16,12 +16,15 @@ C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubT
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\Antlr4.Runtime.Standard.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\Azure.AI.Language.QuestionAnswering.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\Azure.Core.dll
+C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\Azure.Storage.Blobs.dll
+C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\Azure.Storage.Common.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\Microsoft.Azure.Services.AppAuthentication.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\Microsoft.Bot.Builder.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\Microsoft.Bot.Builder.AI.QnA.dll
+C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\Microsoft.Bot.Builder.Azure.Blobs.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\Microsoft.Bot.Builder.Dialogs.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\Microsoft.Bot.Builder.Dialogs.Declarative.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\Microsoft.Bot.Builder.Integration.AspNet.Core.dll

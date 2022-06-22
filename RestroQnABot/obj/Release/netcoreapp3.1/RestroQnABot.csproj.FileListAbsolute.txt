@@ -88,3 +88,6 @@ C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\Rest
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\RestroQnABot.csproj.AssemblyReference.cache
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\RestroQnABot.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Release\netcoreapp3.1\appsettings.Production.json
+C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Release\netcoreapp3.1\Azure.Storage.Blobs.dll
+C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Release\netcoreapp3.1\Azure.Storage.Common.dll
+C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Release\netcoreapp3.1\Microsoft.Bot.Builder.Azure.Blobs.dll

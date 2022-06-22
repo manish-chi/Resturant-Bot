@@ -77,6 +77,11 @@ namespace RestroQnABot.Utlities
 
         private CustomQnARequest createBodywithSourceFilters(string question,string knowleadgeBaseSource)
         {
+            if (String.IsNullOrEmpty(knowleadgeBaseSource)) {
+
+                throw new ArgumentException($"knowleadgeBaseSource configuration value hasn't been assigned.");
+            }
+
             var sourceFilters = new List<string>();
             sourceFilters.Add($"{knowleadgeBaseSource}");
 

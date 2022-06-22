@@ -3,6 +3,7 @@
 //
 // Generated with Bot Builder V4 SDK Template for Visual Studio CoreBot v4.15.2
 
+using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Integration.AspNet.Core;
 using Microsoft.Bot.Builder.TraceExtensions;
 using Microsoft.Bot.Connector.Authentication;
@@ -19,10 +20,17 @@ namespace RestroQnABot
     public class AdapterWithErrorHandler : CloudAdapter
     {
         private AppSettings _appSettings;
-        public AdapterWithErrorHandler(BotFrameworkAuthentication auth,InputTypeMiddleWare inputTypeMiddleware,TranslationMiddleWare translationMiddleWare,IOptions<AppSettings> appSettings, ILogger<IBotFrameworkHttpAdapter> logger,IConfiguration configuration)
+        private UserState _userState;
+        private IStatePropertyAccessor<KnowleadgeBaseSettings> _knowleadgeBaseAccessor;
+        public AdapterWithErrorHandler(BotFrameworkAuthentication auth,
+            UserState userState,InputTypeMiddleWare inputTypeMiddleware,TranslationMiddleWare translationMiddleWare,IOptions<AppSettings> appSettings, ILogger<IBotFrameworkHttpAdapter> logger,IConfiguration configuration)
             : base(auth, logger)
         {
+            _userState = userState;
             _appSettings = appSettings.Value;
+
+            _knowleadgeBaseAccessor = userState.CreateProperty<KnowleadgeBaseSettings>(nameof(KnowleadgeBaseSettings));
+
 
             var questionAnswerManager = new QuestionAnswerManager(configuration,new CustomQnAServiceClient(configuration), new AdaptiveCardManager());
             Use(inputTypeMiddleware);
@@ -37,14 +45,18 @@ namespace RestroQnABot
 
                     // Send a message to the user
                     await turnContext.SendActivityAsync("The bot encountered an error or bug.");
-                    await turnContext.SendActivityAsync("To continue to run this bot, please fix the bot source code.");
+                    await turnContext.SendActivityAsync(exception.Message);
 
                     // Send a trace activity, which will be displayed in the Bot Framework Emulator
                     await turnContext.TraceActivityAsync("OnTurnError Trace", exception.Message, "https://www.botframework.com/schemas/error", "TurnError");
                 }
                 else {
 
-                    var reply = await questionAnswerManager.GetAnswer("Error Message", "Bot-Hyderabad.tsv");
+                    var knowleadgeBaseSettings = await _knowleadgeBaseAccessor.GetAsync(turnContext, () => new KnowleadgeBaseSettings());
+
+                    var kbSources = knowleadgeBaseSettings.KnowleageBaseSource;
+
+                    var reply = await questionAnswerManager.GetAnswerFromSingleKb("Error", kbSources[0]);
                     // Send a message to the user
                     await turnContext.SendActivityAsync(reply);
                 }

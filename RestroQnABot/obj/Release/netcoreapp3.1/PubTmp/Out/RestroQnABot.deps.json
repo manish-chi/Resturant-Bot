@@ -37,6 +37,7 @@
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "3.1.1",
           "Microsoft.Bot.Builder": "4.16.0",
           "Microsoft.Bot.Builder.AI.QnA": "4.16.0",
+          "Microsoft.Bot.Builder.Azure.Blobs": "4.16.0",
           "Microsoft.Bot.Builder.Integration.AspNet.Core": "4.15.2",
           "RestSharp": "107.3.0",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
@@ -393,6 +394,35 @@
           "lib/netcoreapp2.1/Azure.Core.dll": {}
         }
       },
+      "Azure.Storage.Blobs/12.8.0": {
+        "dependencies": {
+          "Azure.Storage.Common": "12.7.0",
+          "System.Text.Json": "5.0.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Azure.Storage.Blobs.dll": {
+            "assemblyVersion": "12.8.0.0",
+            "fileVersion": "12.800.21.6201"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Azure.Storage.Blobs.dll": {}
+        }
+      },
+      "Azure.Storage.Common/12.7.0": {
+        "dependencies": {
+          "Azure.Core": "1.24.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Azure.Storage.Common.dll": {
+            "assemblyVersion": "12.7.0.0",
+            "fileVersion": "12.700.21.6201"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Azure.Storage.Common.dll": {}
+        }
+      },
       "Microsoft.AspNetCore.JsonPatch/3.1.1": {
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
@@ -483,6 +513,26 @@
         },
         "compile": {
           "lib/netstandard2.0/Microsoft.Bot.Builder.AI.QnA.dll": {}
+        }
+      },
+      "Microsoft.Bot.Builder.Azure.Blobs/4.16.0": {
+        "dependencies": {
+          "Azure.Storage.Blobs": "12.8.0",
+          "Microsoft.Bot.Builder": "4.16.0",
+          "Microsoft.Rest.ClientRuntime": "2.3.21",
+          "Newtonsoft.Json": "12.0.3",
+          "System.Text.Encodings.Web": "4.7.2",
+          "System.Text.Json": "5.0.0",
+          "System.Threading.Tasks.Extensions": "4.5.4"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Bot.Builder.Azure.Blobs.dll": {
+            "assemblyVersion": "4.16.0.0",
+            "fileVersion": "4.16.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Bot.Builder.Azure.Blobs.dll": {}
         }
       },
       "Microsoft.Bot.Builder.Dialogs/4.16.0": {
@@ -3750,6 +3800,20 @@
       "path": "azure.core/1.24.0",
       "hashPath": "azure.core.1.24.0.nupkg.sha512"
     },
+    "Azure.Storage.Blobs/12.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LrnOTVdRk2n8obV8Z0R7ZpuFd6SlyxPiX4+M4TyCKbFEJlTPAStewqrXHr4JMDJYzn+b5sr1CMsz75CoHYabhg==",
+      "path": "azure.storage.blobs/12.8.0",
+      "hashPath": "azure.storage.blobs.12.8.0.nupkg.sha512"
+    },
+    "Azure.Storage.Common/12.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-w2hcSk80NbkUIvb0x81zYAvpx7RzhRVJjWterjYpEI9DRNLoqxap3b7LOSnLfcA5jgSVaeKlOZzneUrXx7+wnA==",
+      "path": "azure.storage.common/12.7.0",
+      "hashPath": "azure.storage.common.12.7.0.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.JsonPatch/3.1.1": {
       "type": "package",
       "serviceable": true,
@@ -3791,6 +3855,13 @@
       "sha512": "sha512-+sRqJMwC6qGc+yYlVH7hoytJ6m/Zr+akf7d57LBuOc0A8LqBc6HaJZoxdp0BUBbFdJW+DLRCEtiExm5HaS1r0g==",
       "path": "microsoft.bot.builder.ai.qna/4.16.0",
       "hashPath": "microsoft.bot.builder.ai.qna.4.16.0.nupkg.sha512"
+    },
+    "Microsoft.Bot.Builder.Azure.Blobs/4.16.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HjkMfQjLK2huHKu/FwRUjHNTxB76JPI7zpIwigW4rYaA94UDX62DpFUueo4pmK4ZHhNC0xXRecIfjwAgmS5rXg==",
+      "path": "microsoft.bot.builder.azure.blobs/4.16.0",
+      "hashPath": "microsoft.bot.builder.azure.blobs.4.16.0.nupkg.sha512"
     },
     "Microsoft.Bot.Builder.Dialogs/4.16.0": {
       "type": "package",

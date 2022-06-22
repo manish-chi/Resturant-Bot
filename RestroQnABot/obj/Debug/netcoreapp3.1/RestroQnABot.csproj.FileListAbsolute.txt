@@ -89,6 +89,7 @@ C:\Users\Manish\Source\Repos\RestroQnABot\RestroQnABot\obj\Debug\netcoreapp3.1\R
 C:\Users\Manish\Source\Repos\RestroQnABot\RestroQnABot\obj\Debug\netcoreapp3.1\RestroQnABot.pdb
 C:\Users\Manish\Source\Repos\RestroQnABot\RestroQnABot\obj\Debug\netcoreapp3.1\RestroQnABot.genruntimeconfig.cache
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Debug\netcoreapp3.1\appsettings.Production.json
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Debug\netcoreapp3.1\DeploymentTemplates\new-rg-parameters.json
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Debug\netcoreapp3.1\DeploymentTemplates\preexisting-rg-parameters.json
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Debug\netcoreapp3.1\DeploymentTemplates\template-with-new-rg.json
@@ -105,12 +106,15 @@ C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Debug\netcoreapp3.1\Adapti
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Debug\netcoreapp3.1\Antlr4.Runtime.Standard.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Debug\netcoreapp3.1\Azure.AI.Language.QuestionAnswering.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Debug\netcoreapp3.1\Azure.Core.dll
+C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Debug\netcoreapp3.1\Azure.Storage.Blobs.dll
+C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Debug\netcoreapp3.1\Azure.Storage.Common.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Debug\netcoreapp3.1\Microsoft.Azure.Services.AppAuthentication.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Debug\netcoreapp3.1\Microsoft.Bot.Builder.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Debug\netcoreapp3.1\Microsoft.Bot.Builder.AI.QnA.dll
+C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Debug\netcoreapp3.1\Microsoft.Bot.Builder.Azure.Blobs.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Debug\netcoreapp3.1\Microsoft.Bot.Builder.Dialogs.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Debug\netcoreapp3.1\Microsoft.Bot.Builder.Dialogs.Declarative.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Debug\netcoreapp3.1\Microsoft.Bot.Builder.Integration.AspNet.Core.dll
@@ -177,4 +181,3 @@ C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Debug\netcoreapp3.1\Restro
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Debug\netcoreapp3.1\RestroQnABot.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Debug\netcoreapp3.1\RestroQnABot.pdb
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Debug\netcoreapp3.1\RestroQnABot.genruntimeconfig.cache
-C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Debug\netcoreapp3.1\appsettings.Production.json

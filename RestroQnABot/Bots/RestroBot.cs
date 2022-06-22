@@ -16,6 +16,8 @@ using Newtonsoft.Json.Linq;
 using RestroQnABot.Models;
 using RestroQnABot.Utlities;
 using RestroQnABot.ConstantsLitrals;
+using Newtonsoft.Json;
+using System.Linq;
 
 namespace RestroQnABot.Bots
 {
@@ -26,11 +28,13 @@ namespace RestroQnABot.Bots
         private QuestionAnswerManager _questionAnswerManager;
         private LanguageManager _languageManager;
         private IStatePropertyAccessor<bool> _welcomeAccessor;
-        private readonly IStatePropertyAccessor<string> _languageAccessor;
+        private IStatePropertyAccessor<string> _languageAccessor;
+        private IStatePropertyAccessor<KnowleadgeBaseSettings> _knowleadgeBaseAccessor;
         protected string WelcomePrompt = String.Empty;
         protected string ChangeLanguagePrompt = String.Empty;
         protected UserState userState;
         protected ConversationState conversationState;
+        protected KnowleadgeBaseSettings _knowleadgeBaseSettings;
         public RestroBot(IConfiguration configuration, T dialog, UserState userState, ConversationState conversationState)
         {
             this.configuration = configuration;
@@ -40,10 +44,13 @@ namespace RestroQnABot.Bots
             this.conversationState = conversationState;
             _welcomeAccessor = userState.CreateProperty<bool>("welcome");
             _languageAccessor = userState.CreateProperty<string>("LanguagePreference");
+            _knowleadgeBaseAccessor = userState.CreateProperty<KnowleadgeBaseSettings>(nameof(KnowleadgeBaseSettings));
 
             _languageManager = new LanguageManager(configuration, userState, new TranslationManager(new AzureTranslationClient(configuration)));
-            _questionAnswerManager = new QuestionAnswerManager(configuration,new CustomQnAServiceClient(configuration)
+            _questionAnswerManager = new QuestionAnswerManager(configuration, new CustomQnAServiceClient(configuration)
                 , new AdaptiveCardManager());
+            _knowleadgeBaseSettings = new KnowleadgeBaseSettings(userState);
+
 
             WelcomePrompt = configuration["WelcomePrompt"];
             ChangeLanguagePrompt = configuration["ChangeLanguagePrompt"];
@@ -53,26 +60,28 @@ namespace RestroQnABot.Bots
 
         public override async Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default)
         {
-        
+
             await base.OnTurnAsync(turnContext, cancellationToken);
 
             // Save any state changes that might have occurred during the turn.
+
             await userState.SaveChangesAsync(turnContext, false, cancellationToken);
             await conversationState.SaveChangesAsync(turnContext, false, cancellationToken);
         }
 
         protected override async Task OnMessageActivityAsync(ITurnContext<IMessageActivity> turnContext, CancellationToken cancellationToken)
         {
+            _knowleadgeBaseSettings = await _knowleadgeBaseSettings.getKnowleadgeBaseSources(turnContext, cancellationToken);
+           
             var isFirstMessage = await _welcomeAccessor.GetAsync(turnContext, () => new bool(), cancellationToken);
 
             if (isFirstMessage && Convert.ToBoolean(configuration["MultiLang"]))
             {
-
                 await _languageManager.CheckAndSetLanguageAsync(turnContext, cancellationToken);
 
                 var userLangCode = await _languageAccessor.GetAsync(turnContext, () => TranslationSettings.DefaultLanguage) ?? TranslationSettings.DefaultLanguage;
 
-                var welcomeReply = await this.WelcomeCard();
+                var welcomeReply = await this.WelcomeCard(_knowleadgeBaseSettings);
 
                 await turnContext.SendActivityAsync(welcomeReply, cancellationToken);
 
@@ -84,40 +93,56 @@ namespace RestroQnABot.Bots
                 //Save Dialog Stack
                 await dialog.RunAsync(turnContext, conversationState.CreateProperty<DialogState>("DialogState"), cancellationToken);
             }
+        }
 
+        protected override async Task OnConversationUpdateActivityAsync(ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
+        {
+            var activity = turnContext.Activity as Activity;
 
+            if (!string.IsNullOrEmpty(activity.Text))
+            {
+                var knowleageBaseData = JsonConvert.DeserializeObject<KnowleadgeSourceData>(activity.Text);
+
+                await _knowleadgeBaseSettings.saveKnowleageBaseSources(turnContext, knowleageBaseData, cancellationToken);
+            }
+
+            await base.OnConversationUpdateActivityAsync(turnContext, cancellationToken);
         }
 
         protected override async Task OnMembersAddedAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
         {
             var userLangCode = await _languageAccessor.GetAsync(turnContext, () => TranslationSettings.DefaultLanguage) ?? TranslationSettings.DefaultLanguage;
-
+           
             foreach (var member in membersAdded)
             {
                 if (member.Id != turnContext.Activity.Recipient.Id)
                 {
+                    _knowleadgeBaseSettings = await _knowleadgeBaseSettings.getKnowleadgeBaseSources(turnContext, cancellationToken);
+
                     if (Convert.ToBoolean(configuration["MultiLang"]))
                     {
                         var languageText = ChangeLanguagePrompt;
-                        var reply = await _questionAnswerManager.GetAnswer(languageText);
+
+                        var reply = await _questionAnswerManager.GetAnswerFromSingleKb(languageText, _knowleadgeBaseSettings.KnowleageBaseSource[0]);
+                        
                         await turnContext.SendActivityAsync(reply, cancellationToken);
 
                         await _welcomeAccessor.SetAsync(turnContext, true, cancellationToken);
                     }
                     else
                     {
-                        var reply = await this.WelcomeCard();
+                        var reply = await this.WelcomeCard(_knowleadgeBaseSettings);
                         await turnContext.SendActivityAsync(reply, cancellationToken);
                     }
                 }
             }
         }
 
-        private async Task<IMessageActivity> WelcomeCard()
+        private async Task<IMessageActivity> WelcomeCard(KnowleadgeBaseSettings knowleadgeBaseSettings)
         {
             //showing welcome card after lang selection.
             var welcomeText = WelcomePrompt;
-            var reply = await _questionAnswerManager.GetAnswer(welcomeText);
+            var reply = await _questionAnswerManager.GetAnswerFromSingleKb(welcomeText, knowleadgeBaseSettings.KnowleageBaseSource[0]);
             return reply;
         }
     }

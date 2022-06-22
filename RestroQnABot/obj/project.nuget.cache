@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "aPT5OawuTRSo9+bgXdRRuF239kLtOOn81O7XDQ5alEjt+IyVGXgEOzoL5bycds6QVNhkhJHX1Lk7PpVTL0aJaw==",
+  "dgSpecHash": "zSZFVCHZrmb+wA/Msr0wEQGsKgawBirwBmHSoMAS+exoclzzhnWh4MTwB9O4OcmpvzPIKDPrtaSzV0ddX4ULnQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Manish\\Source\\Repos\\Bot2022\\RestroQnABot\\RestroQnABot.csproj",
   "expectedPackageFiles": [
@@ -9,12 +9,15 @@
     "C:\\Users\\Manish\\.nuget\\packages\\antlr4.runtime.standard\\4.8.0\\antlr4.runtime.standard.4.8.0.nupkg.sha512",
     "C:\\Users\\Manish\\.nuget\\packages\\azure.ai.language.questionanswering\\1.0.0\\azure.ai.language.questionanswering.1.0.0.nupkg.sha512",
     "C:\\Users\\Manish\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
+    "C:\\Users\\Manish\\.nuget\\packages\\azure.storage.blobs\\12.8.0\\azure.storage.blobs.12.8.0.nupkg.sha512",
+    "C:\\Users\\Manish\\.nuget\\packages\\azure.storage.common\\12.7.0\\azure.storage.common.12.7.0.nupkg.sha512",
     "C:\\Users\\Manish\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.1\\microsoft.aspnetcore.jsonpatch.3.1.1.nupkg.sha512",
     "C:\\Users\\Manish\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.1\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.1.nupkg.sha512",
     "C:\\Users\\Manish\\.nuget\\packages\\microsoft.azure.services.appauthentication\\1.6.1\\microsoft.azure.services.appauthentication.1.6.1.nupkg.sha512",
     "C:\\Users\\Manish\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Manish\\.nuget\\packages\\microsoft.bot.builder\\4.16.0\\microsoft.bot.builder.4.16.0.nupkg.sha512",
     "C:\\Users\\Manish\\.nuget\\packages\\microsoft.bot.builder.ai.qna\\4.16.0\\microsoft.bot.builder.ai.qna.4.16.0.nupkg.sha512",
+    "C:\\Users\\Manish\\.nuget\\packages\\microsoft.bot.builder.azure.blobs\\4.16.0\\microsoft.bot.builder.azure.blobs.4.16.0.nupkg.sha512",
     "C:\\Users\\Manish\\.nuget\\packages\\microsoft.bot.builder.dialogs\\4.16.0\\microsoft.bot.builder.dialogs.4.16.0.nupkg.sha512",
     "C:\\Users\\Manish\\.nuget\\packages\\microsoft.bot.builder.dialogs.declarative\\4.16.0\\microsoft.bot.builder.dialogs.declarative.4.16.0.nupkg.sha512",
     "C:\\Users\\Manish\\.nuget\\packages\\microsoft.bot.builder.integration.aspnet.core\\4.15.2\\microsoft.bot.builder.integration.aspnet.core.4.15.2.nupkg.sha512",

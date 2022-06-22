@@ -42,6 +42,7 @@
 
             let conversationId;
             let token;
+            let directLine;
 
             conversationId = window.sessionStorage["conversationId"];
             token = window.sessionStorage["token"];
@@ -66,8 +67,8 @@
 
                 var raw = JSON.stringify({
                     "user": {
-                        "id": "dl_bot",
-                        "name": "Bot-Hyderabad"
+                        "id": "dl_",
+                        "name": "username"
                     },
                     "trustedOrigins": [
                         "string"
@@ -96,21 +97,25 @@
                         type: 'WEB_CHAT/SEND_EVENT',
                         payload: {
                             name: 'webchat/join',
-                            value: { language: window.navigator.language }
+                            value: {
+                                data: { language: window.navigator.language }
+                            }
                         }
                     });
                 }
                 return next(action);
             });
 
+            directLine =  window.WebChat.createDirectLine({
+                token: token
+            });
 
             window.WebChat.renderWebChat(
                 {
-                    directLine: window.WebChat.createDirectLine({
-                        token: token
-                    }),
-                    userID: 'YOUR_USER_ID',
-                    username: 'Web Chat User',
+                    directLine,
+                    sendTypingIndicator: true,
+                    userID: 'dl_',
+                    username: "username",
                     locale: 'en-US',
                     botAvatarInitials: 'WC',
                     userAvatarInitials: 'WW',
@@ -119,6 +124,16 @@
                 document.getElementById('webchat')
             );
 
+
+            directLine.postActivity({
+                from: { id: 'dl_', name: 'username' }, // required (from.name is optional)
+                type: 'conversationUpdate',
+                name : 'knowleageBaseSource',
+                text: '{"data": ["SimplySouth.xlsx","SouthIndianCalories.xlsx","NorthIndianCalories.xlsx"]}'
+            }).subscribe(
+                id => console.log("Posted activity, assigned ID ", id),
+                error => console.log("Error posting activity", error)
+            );
 
         })().catch(err => console.error(err));
     </script>
