@@ -67,8 +67,8 @@
 
                 var raw = JSON.stringify({
                     "user": {
-                        "id": "dl_",
-                        "name": "username"
+                        "id": "dl_south",
+                        "name": "south"
                     },
                     "trustedOrigins": [
                         "string"
@@ -88,7 +88,6 @@
                 token = directLineToken;
                 sessionStorage.conversationId = conversation_Id;
                 sessionStorage.token = token;
-
             }
 
             const store = window.WebChat.createStore({}, ({ dispatch }) => next => action => {
@@ -105,19 +104,16 @@
                 return next(action);
             });
 
-
-
-            directLine = window.WebChat.createDirectLine({
+            directLine =  window.WebChat.createDirectLine({
                 token: token
             });
-
 
             window.WebChat.renderWebChat(
                 {
                     directLine,
                     sendTypingIndicator: true,
-                    userID: 'dl_',
-                    username: "username",
+                    userID: 'dl_south',
+                    username: "south",
                     locale: 'en-US',
                     botAvatarInitials: 'WC',
                     userAvatarInitials: 'WW',
@@ -128,9 +124,9 @@
 
 
             //directLine.postActivity({
-            //    from: { id: 'dl_', name: 'username' }, // required (from.name is optional)
+            //    from: { id: 'dl_south', name: 'south' }, // required (from.name is optional)
             //    type: 'conversationUpdate',
-            //    name: 'knowleageBaseSource',
+            //    name : 'knowleageBaseSource',
             //    text: '{"data": ["SimplySouth.xlsx","SouthIndianCalories.xlsx","NorthIndianCalories.xlsx"]}'
             //}).subscribe(
             //    id => console.log("Posted activity, assigned ID ", id),

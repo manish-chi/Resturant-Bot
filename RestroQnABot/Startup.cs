@@ -40,6 +40,8 @@ namespace RestroQnABot
         {
             services.AddHttpClient().AddControllers().AddNewtonsoftJson();
 
+            services.AddControllersWithViews();
+
             services.Configure<AppSettings>(Configuration.GetSection("ApplicationSettings"));
 
             //services.AddSingleton<AppSettings>();
@@ -77,6 +79,7 @@ namespace RestroQnABot
             var userState = new UserState(storage);
             services.AddSingleton(userState);
 
+            services.AddSingleton(services);
             // Create the Conversation state passing in the storage layer.
             var conversationState = new ConversationState(storage);
             services.AddSingleton(conversationState);
@@ -100,6 +103,8 @@ namespace RestroQnABot
                 app.UseDeveloperExceptionPage();
             }
 
+
+
             app.UseDefaultFiles()
                 .UseStaticFiles()
                 .UseWebSockets()
@@ -107,6 +112,8 @@ namespace RestroQnABot
                 .UseAuthorization()
                 .UseEndpoints(endpoints =>
                 {
+                    endpoints.MapControllerRoute(name: "default",
+    pattern: "{controller=Bot}/{action=Index}");
                     endpoints.MapControllers();
                 });
 

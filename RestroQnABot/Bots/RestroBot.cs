@@ -18,6 +18,9 @@ using RestroQnABot.Utlities;
 using RestroQnABot.ConstantsLitrals;
 using Newtonsoft.Json;
 using System.Linq;
+using Microsoft.Bot.Builder.Azure.Blobs;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace RestroQnABot.Bots
 {
@@ -25,6 +28,8 @@ namespace RestroQnABot.Bots
     {
         protected IConfiguration configuration;
         protected Dialog dialog;
+        private IServiceCollection service;
+        private IServiceProvider serviceProvider;
         private QuestionAnswerManager _questionAnswerManager;
         private LanguageManager _languageManager;
         private IStatePropertyAccessor<bool> _welcomeAccessor;
@@ -40,6 +45,7 @@ namespace RestroQnABot.Bots
             this.configuration = configuration;
             this.userState = userState;
             this.dialog = dialog;
+
 
             this.conversationState = conversationState;
             _welcomeAccessor = userState.CreateProperty<bool>("welcome");
@@ -95,46 +101,92 @@ namespace RestroQnABot.Bots
             }
         }
 
-        protected override async Task OnConversationUpdateActivityAsync(ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
+        protected override Task OnEventAsync(ITurnContext<IEventActivity> turnContext, CancellationToken cancellationToken)
         {
-            var activity = turnContext.Activity as Activity;
-
-            if (!string.IsNullOrEmpty(activity.Text))
-            {
-                var knowleageBaseData = JsonConvert.DeserializeObject<KnowleadgeSourceData>(activity.Text);
-
-                await _knowleadgeBaseSettings.saveKnowleageBaseSources(turnContext, knowleageBaseData, cancellationToken);
-            }
-
-            await base.OnConversationUpdateActivityAsync(turnContext, cancellationToken);
+            return base.OnEventAsync(turnContext, cancellationToken);
         }
 
-        protected override async Task OnMembersAddedAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
+        protected override async Task OnEventActivityAsync(ITurnContext<IEventActivity> turnContext, CancellationToken cancellationToken)
         {
-            var userLangCode = await _languageAccessor.GetAsync(turnContext, () => TranslationSettings.DefaultLanguage) ?? TranslationSettings.DefaultLanguage;
+            if (turnContext.Activity.Name.Equals("webchat/join")) {
+
+                var userLangCode = await _languageAccessor.GetAsync(turnContext, () => TranslationSettings.DefaultLanguage) ?? TranslationSettings.DefaultLanguage;
+
+                var knowleageBaseData = JsonConvert.DeserializeObject<KnowleadgeSourceData>(turnContext.Activity.Value.ToString());
+
+                await _knowleadgeBaseSettings.saveKnowleageBaseSources(turnContext, knowleageBaseData, cancellationToken);
+
+                await this.WelcomeActivity(turnContext, cancellationToken);
+            }
+
+           await base.OnEventActivityAsync(turnContext, cancellationToken);
+        }
+
+        //protected override async Task OnConversationUpdateActivityAsync(ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
+        //{
+        //    var activity = turnContext.Activity as Activity;
+
+        //    if (!string.IsNullOrEmpty(activity.Text))
+        //    {
+        //        var userLangCode = await _languageAccessor.GetAsync(turnContext, () => TranslationSettings.DefaultLanguage) ?? TranslationSettings.DefaultLanguage;
+
+        //        var knowleageBaseData = JsonConvert.DeserializeObject<KnowleadgeSourceData>(activity.Text);
+
+        //        await _knowleadgeBaseSettings.saveKnowleageBaseSources(turnContext, knowleageBaseData, cancellationToken);
+
+        //    }
+        //    await base.OnConversationUpdateActivityAsync(turnContext, cancellationToken);
+        //}
+
+        //protected override async Task OnMembersAddedAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
+        //{
+        //    var userLangCode = await _languageAccessor.GetAsync(turnContext, () => TranslationSettings.DefaultLanguage) ?? TranslationSettings.DefaultLanguage;
            
-            foreach (var member in membersAdded)
-            {
-                if (member.Id != turnContext.Activity.Recipient.Id)
-                {
-                    _knowleadgeBaseSettings = await _knowleadgeBaseSettings.getKnowleadgeBaseSources(turnContext, cancellationToken);
+        //    foreach (var member in membersAdded)
+        //    {
+        //        if (member.Id != turnContext.Activity.Recipient.Id)
+        //        {
+        //            _knowleadgeBaseSettings = await _knowleadgeBaseSettings.getKnowleadgeBaseSources(turnContext, cancellationToken);
 
-                    if (Convert.ToBoolean(configuration["MultiLang"]))
-                    {
-                        var languageText = ChangeLanguagePrompt;
+        //            if (Convert.ToBoolean(configuration["MultiLang"]))
+        //            {
+        //                var languageText = ChangeLanguagePrompt;
 
-                        var reply = await _questionAnswerManager.GetAnswerFromSingleKb(languageText, _knowleadgeBaseSettings.KnowleageBaseSource[0]);
+        //                var reply = await _questionAnswerManager.GetAnswerFromSingleKb(languageText, _knowleadgeBaseSettings.KnowleageBaseSource[0]);
                         
-                        await turnContext.SendActivityAsync(reply, cancellationToken);
+        //                await turnContext.SendActivityAsync(reply, cancellationToken);
 
-                        await _welcomeAccessor.SetAsync(turnContext, true, cancellationToken);
-                    }
-                    else
-                    {
-                        var reply = await this.WelcomeCard(_knowleadgeBaseSettings);
-                        await turnContext.SendActivityAsync(reply, cancellationToken);
-                    }
-                }
+        //                await _welcomeAccessor.SetAsync(turnContext, true, cancellationToken);
+        //            }
+        //            else
+        //            {
+        //                var reply = await this.WelcomeCard(_knowleadgeBaseSettings);
+        //                await turnContext.SendActivityAsync(reply, cancellationToken);
+        //            }
+        //        }
+        //    }
+        //}
+
+
+        private async Task WelcomeActivity(ITurnContext turnContext,CancellationToken cancellationToken){
+
+            _knowleadgeBaseSettings = await _knowleadgeBaseSettings.getKnowleadgeBaseSources(turnContext, cancellationToken);
+
+            if (Convert.ToBoolean(configuration["MultiLang"]))
+            {
+                var languageText = ChangeLanguagePrompt;
+
+                var reply = await _questionAnswerManager.GetAnswerFromSingleKb(languageText, _knowleadgeBaseSettings.KnowleageBaseSource[0]);
+
+                await turnContext.SendActivityAsync(reply, cancellationToken);
+
+                await _welcomeAccessor.SetAsync(turnContext, true, cancellationToken);
+            }
+            else
+            {
+                var reply = await this.WelcomeCard(_knowleadgeBaseSettings);
+
+                await turnContext.SendActivityAsync(reply, cancellationToken);
             }
         }
 

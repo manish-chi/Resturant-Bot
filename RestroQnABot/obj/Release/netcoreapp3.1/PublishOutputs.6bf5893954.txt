@@ -78,3 +78,5 @@ C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubT
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\System.Text.Json.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\runtimes\unix\lib\netstandard1.3\System.Security.Cryptography.ProtectedData.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\runtimes\win\lib\netstandard1.3\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\RestroQnABot.Views.dll
+C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\PubTmp\Out\RestroQnABot.Views.pdb

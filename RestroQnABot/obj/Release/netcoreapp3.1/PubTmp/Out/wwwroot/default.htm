@@ -42,7 +42,6 @@
 
             let conversationId;
             let token;
-            let knowleadgeBaseId = "Bot-Hyderabad.tsv";
             let directLine;
 
             conversationId = window.sessionStorage["conversationId"];
@@ -89,6 +88,7 @@
                 token = directLineToken;
                 sessionStorage.conversationId = conversation_Id;
                 sessionStorage.token = token;
+
             }
 
             const store = window.WebChat.createStore({}, ({ dispatch }) => next => action => {
@@ -98,25 +98,25 @@
                         type: 'WEB_CHAT/SEND_EVENT',
                         payload: {
                             name: 'webchat/join',
-                            value: {
-                                data: { language: window.navigator.language }
-                            }
+                            value: '{"data": ["SimplySouth.xlsx","SouthIndianCalories.xlsx","NorthIndianCalories.xlsx"]}'
                         }
                     });
                 }
                 return next(action);
             });
 
-            directLine =  window.WebChat.createDirectLine({
+
+
+            directLine = window.WebChat.createDirectLine({
                 token: token
             });
+
 
             window.WebChat.renderWebChat(
                 {
                     directLine,
                     sendTypingIndicator: true,
                     userID: 'dl_',
-                    value : 'a;lkdjfasdf' ,
                     username: "username",
                     locale: 'en-US',
                     botAvatarInitials: 'WC',
@@ -127,16 +127,15 @@
             );
 
 
-            directLine.postActivity({
-                from: { id: 'dl_', name: 'username' }, // required (from.name is optional)
-                type: 'conversationUpdate',
-                name : 'knowleageBaseSource',
-                text: 'Bot-Hyderabad.tsv'
-            }).subscribe(
-                id => console.log("Posted activity, assigned ID ", id),
-                error => console.log("Error posting activity", error)
-            );
-
+            //directLine.postActivity({
+            //    from: { id: 'dl_', name: 'username' }, // required (from.name is optional)
+            //    type: 'conversationUpdate',
+            //    name: 'knowleageBaseSource',
+            //    text: '{"data": ["SimplySouth.xlsx","SouthIndianCalories.xlsx","NorthIndianCalories.xlsx"]}'
+            //}).subscribe(
+            //    id => console.log("Posted activity, assigned ID ", id),
+            //    error => console.log("Error posting activity", error)
+            //);
 
         })().catch(err => console.error(err));
     </script>

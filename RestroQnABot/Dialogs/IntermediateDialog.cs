@@ -35,7 +35,6 @@ namespace RestroQnABot.Dialogs
             };
             Dialogs.Add(new WaterfallDialog("waterfallsteps", steps));
             Dialogs.Add(new QuestionAnsweringDialog(configuration,userState));
-            
         }
 
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)

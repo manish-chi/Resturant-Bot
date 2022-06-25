@@ -91,3 +91,14 @@ C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Release\netcoreapp3.1\apps
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Release\netcoreapp3.1\Azure.Storage.Blobs.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Release\netcoreapp3.1\Azure.Storage.Common.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Release\netcoreapp3.1\Microsoft.Bot.Builder.Azure.Blobs.dll
+C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Release\netcoreapp3.1\RestroQnABot.Views.dll
+C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\bin\Release\netcoreapp3.1\RestroQnABot.Views.pdb
+C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\RestroQnABot.RazorAssemblyInfo.cache
+C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\RestroQnABot.RazorAssemblyInfo.cs
+C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\RestroQnABot.TagHelpers.input.cache
+C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\RestroQnABot.TagHelpers.output.cache
+C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\RestroQnABot.RazorCoreGenerate.cache
+C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\Razor\Views\Home\North.cshtml.g.cs
+C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\Razor\Views\Home\South.cshtml.g.cs
+C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\RestroQnABot.RazorTargetAssemblyInfo.cs
+C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Release\netcoreapp3.1\RestroQnABot.Views.pdb

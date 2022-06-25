@@ -67,8 +67,8 @@
 
                 var raw = JSON.stringify({
                     "user": {
-                        "id": "dl_",
-                        "name": "username"
+                        "id": "dl_north",
+                        "name": "north"
                     },
                     "trustedOrigins": [
                         "string"
@@ -88,7 +88,6 @@
                 token = directLineToken;
                 sessionStorage.conversationId = conversation_Id;
                 sessionStorage.token = token;
-
             }
 
             const store = window.WebChat.createStore({}, ({ dispatch }) => next => action => {
@@ -98,26 +97,23 @@
                         type: 'WEB_CHAT/SEND_EVENT',
                         payload: {
                             name: 'webchat/join',
-                            value: '{"data": ["SimplySouth.xlsx","SouthIndianCalories.xlsx","NorthIndianCalories.xlsx"]}'
+                            value: '{"data": ["NorthIndianCalories.xlsx","DhabaExpress.xlsx"]}'
                         }
                     });
                 }
                 return next(action);
             });
 
-
-
-            directLine = window.WebChat.createDirectLine({
+            directLine =  window.WebChat.createDirectLine({
                 token: token
             });
-
 
             window.WebChat.renderWebChat(
                 {
                     directLine,
                     sendTypingIndicator: true,
-                    userID: 'dl_',
-                    username: "username",
+                    userID: 'dl_north',
+                    username: "north",
                     locale: 'en-US',
                     botAvatarInitials: 'WC',
                     userAvatarInitials: 'WW',
@@ -128,10 +124,10 @@
 
 
             //directLine.postActivity({
-            //    from: { id: 'dl_', name: 'username' }, // required (from.name is optional)
+            //    from: { id: 'dl_north', name: 'north' }, // required (from.name is optional)
             //    type: 'conversationUpdate',
-            //    name: 'knowleageBaseSource',
-            //    text: '{"data": ["SimplySouth.xlsx","SouthIndianCalories.xlsx","NorthIndianCalories.xlsx"]}'
+            //    name : 'knowleageBaseSource',
+            //    text: '{"data": ["NorthIndianCalories.xlsx","DhabaExpress.xlsx"]}'
             //}).subscribe(
             //    id => console.log("Posted activity, assigned ID ", id),
             //    error => console.log("Error posting activity", error)
