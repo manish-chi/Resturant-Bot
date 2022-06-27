@@ -79,7 +79,7 @@ namespace RestroQnABot
             var userState = new UserState(storage);
             services.AddSingleton(userState);
 
-            services.AddSingleton(services);
+            //services.AddSingleton(services);
             // Create the Conversation state passing in the storage layer.
             var conversationState = new ConversationState(storage);
             services.AddSingleton(conversationState);
@@ -87,12 +87,16 @@ namespace RestroQnABot
             services.AddSingleton<InputTypeMiddleWare>();
 
             services.AddSingleton<TranslationMiddleWare>();
+
+            //services.AddSingleton<ChangeLanguageMiddleware>();
+
+            //services.AddSingleton<WelcomeMiddleware>();
          
             services.AddSingleton(new TranslationManager(new AzureTranslationClient(Configuration)));
 
-            services.AddSingleton<IntermediateDialog>();
+            //services.AddSingleton<WelcomeAndChangeLanguageDialog>();
             // Create the bot as a transient. In this case the ASP Controller is expecting an IBot.
-            services.AddTransient<IBot, RestroBot<IntermediateDialog>>();
+            services.AddTransient<IBot, RestroBot>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -17,7 +17,7 @@ namespace RestroQnABot.Dialogs
     {
         private LanguageManager _languageManager;
         private IStatePropertyAccessor<bool> _welcomeAccessor;
-        private  IStatePropertyAccessor<KnowleadgeBaseSettings> _knowleadgeBaseAccessor;
+        private  IStatePropertyAccessor<KnowleadgeSourceData> _knowleadgeBaseAccessor;
         private string knowleageBaseSource;
 
         public IntermediateDialog(IConfiguration configuration, UserState userState, TranslationManager translationManager) : base(nameof(IntermediateDialog), configuration, userState, translationManager)
@@ -26,7 +26,7 @@ namespace RestroQnABot.Dialogs
 
             _welcomeAccessor = userState.CreateProperty<bool>("welcome");
 
-            _knowleadgeBaseAccessor = userState.CreateProperty<KnowleadgeBaseSettings>(nameof(KnowleadgeBaseSettings));
+            _knowleadgeBaseAccessor = userState.CreateProperty<KnowleadgeSourceData>(nameof(KnowleadgeSourceData));
 
             var steps = new WaterfallStep[] {
                 GetCommonBotAnswerAsync,
@@ -65,9 +65,9 @@ namespace RestroQnABot.Dialogs
             }
             else {
 
-                var knowleadgeBaseSettings = await _knowleadgeBaseAccessor.GetAsync(stepContext.Context, () => new KnowleadgeBaseSettings(), cancellationToken);
+                var knowleadgeBaseSettings = await _knowleadgeBaseAccessor.GetAsync(stepContext.Context, () => new KnowleadgeSourceData(), cancellationToken);
 
-                var kbSources = knowleadgeBaseSettings.KnowleageBaseSource;
+                var kbSources = knowleadgeBaseSettings.data.ToList();
 
                 return await stepContext.BeginDialogAsync(nameof(QuestionAnsweringDialog),kbSources, cancellationToken);
             }
@@ -75,9 +75,9 @@ namespace RestroQnABot.Dialogs
 
         private async Task<DialogTurnResult> GetNoAnswerFoundAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            var knowleadgeBaseSettings = await _knowleadgeBaseAccessor.GetAsync(stepContext.Context, () => new KnowleadgeBaseSettings(), cancellationToken);
+            var knowleadgeBaseSettings = await _knowleadgeBaseAccessor.GetAsync(stepContext.Context, () => new KnowleadgeSourceData(), cancellationToken);
 
-            var kbSources = knowleadgeBaseSettings.KnowleageBaseSource;
+            var kbSources = knowleadgeBaseSettings.data;
 
             //sending only first source if the answer is not found.
             return await this.ForwardToQnADialog(stepContext, cancellationToken,kbSources[0]); 

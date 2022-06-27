@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>WebChat</title>
+    <title>South-test</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
@@ -27,11 +27,7 @@
 </head>
 
 <body>
-    <!--<iframe src='https://webchat.botframework.com/embed/RBot2022Bot?s=9JynVTUo6As.OZDLJMTWlJTLyC6xGxwbfSOHNYqXFputIfwqdkqFBBQ' style='min-width: 400px; width: 100%; min-height: 500px;'></iframe>
-    <div id="webchat" role="main"></div>
-    <script type="text/javascript"
-            src="https://unpkg.com/markdown-it/dist/markdown-it.min.js"></script>
-    <script src="https://cdn.botframework.com/botframework-webchat/master/webchat.js"></script>-->
+    <h2>South-Test</h2>
     <div id="webchat" role="main"></div>
     <script type="text/javascript"
             src="https://unpkg.com/markdown-it/dist/markdown-it.min.js"></script>
@@ -43,6 +39,9 @@
             let conversationId;
             let token;
             let directLine;
+            let dateTime = (new Date()).getTime();
+            let userId = `dl_south_${dateTime}`;
+            let userName = "south";
 
             conversationId = window.sessionStorage["conversationId"];
             token = window.sessionStorage["token"];
@@ -67,8 +66,8 @@
 
                 var raw = JSON.stringify({
                     "user": {
-                        "id": "dl_south",
-                        "name": "south"
+                        "id": userId,
+                        "name": userName
                     },
                     "trustedOrigins": [
                         "string"
@@ -97,7 +96,7 @@
                         type: 'WEB_CHAT/SEND_EVENT',
                         payload: {
                             name: 'webchat/join',
-                            value: '{"data": ["SimplySouth.xlsx","SouthIndianCalories.xlsx","NorthIndianCalories.xlsx"]}'
+                            value: '{"data": ["SimplySouth.xlsx","SouthIndianCalories.xlsx","NorthIndianCalories.xlsx"],"multiLang":"true"}'
                         }
                     });
                 }
@@ -112,8 +111,8 @@
                 {
                     directLine,
                     sendTypingIndicator: true,
-                    userID: 'dl_south',
-                    username: "south",
+                    userID: userId,
+                    username: userName,
                     locale: 'en-US',
                     botAvatarInitials: 'WC',
                     userAvatarInitials: 'WW',
@@ -121,17 +120,6 @@
                 },
                 document.getElementById('webchat')
             );
-
-
-            //directLine.postActivity({
-            //    from: { id: 'dl_south', name: 'south' }, // required (from.name is optional)
-            //    type: 'conversationUpdate',
-            //    name : 'knowleageBaseSource',
-            //    text: '{"data": ["SimplySouth.xlsx","SouthIndianCalories.xlsx","NorthIndianCalories.xlsx"]}'
-            //}).subscribe(
-            //    id => console.log("Posted activity, assigned ID ", id),
-            //    error => console.log("Error posting activity", error)
-            //);
 
         })().catch(err => console.error(err));
     </script>

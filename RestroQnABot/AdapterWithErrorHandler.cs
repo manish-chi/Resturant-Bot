@@ -21,7 +21,7 @@ namespace RestroQnABot
     {
         private AppSettings _appSettings;
         private UserState _userState;
-        private IStatePropertyAccessor<KnowleadgeBaseSettings> _knowleadgeBaseAccessor;
+        private IStatePropertyAccessor<KnowleadgeSourceData> _knowleadgeBaseAccessor;
         public AdapterWithErrorHandler(BotFrameworkAuthentication auth,
             UserState userState,InputTypeMiddleWare inputTypeMiddleware,TranslationMiddleWare translationMiddleWare,IOptions<AppSettings> appSettings, ILogger<IBotFrameworkHttpAdapter> logger,IConfiguration configuration)
             : base(auth, logger)
@@ -29,12 +29,15 @@ namespace RestroQnABot
             _userState = userState;
             _appSettings = appSettings.Value;
 
-            _knowleadgeBaseAccessor = userState.CreateProperty<KnowleadgeBaseSettings>(nameof(KnowleadgeBaseSettings));
+            _knowleadgeBaseAccessor = userState.CreateProperty<KnowleadgeSourceData>(nameof(KnowleadgeSourceData));
 
 
             var questionAnswerManager = new QuestionAnswerManager(configuration,new CustomQnAServiceClient(configuration), new AdaptiveCardManager());
             Use(inputTypeMiddleware);
             Use(translationMiddleWare);
+           // Use(changeLanguageMiddleWare);
+           // Use(welcomeMiddleware);
+            
 
             OnTurnError = async (turnContext, exception) =>
             {
@@ -52,9 +55,9 @@ namespace RestroQnABot
                 }
                 else {
 
-                    var knowleadgeBaseSettings = await _knowleadgeBaseAccessor.GetAsync(turnContext, () => new KnowleadgeBaseSettings());
+                    var knowleadgeBaseSettings = await _knowleadgeBaseAccessor.GetAsync(turnContext, () => new KnowleadgeSourceData());
 
-                    var kbSources = knowleadgeBaseSettings.KnowleageBaseSource;
+                    var kbSources = knowleadgeBaseSettings.data;
 
                     var reply = await questionAnswerManager.GetAnswerFromSingleKb("Error", kbSources[0]);
                     // Send a message to the user

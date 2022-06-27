@@ -34,7 +34,6 @@ namespace RestroQnABot.Dialogs
             if (knowleageBaseCollection.Count() > 0)
             {
                  reply = (Activity) await _questionAnswerManager.GetAnswerFromMultipleKb(outerDc.Context.Activity.Text, knowleageBaseCollection);
-
             }
             else {
                 reply = (Activity) await _questionAnswerManager.GetAnswerFromSingleKb(outerDc.Context.Activity.Text, knowleageBaseCollection[0]);

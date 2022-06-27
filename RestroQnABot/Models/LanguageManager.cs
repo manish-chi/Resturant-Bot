@@ -1,6 +1,7 @@
 ﻿using Microsoft.Bot.Builder;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json.Linq;
+using RestroQnABot.Cards;
 using RestroQnABot.Utlities;
 using System;
 using System.Collections.Generic;
@@ -86,5 +87,8 @@ namespace RestroQnABot.Models
             await _languageStateProperty.SetAsync(turnContext, userLangCode, cancellationToken);
             await turnContext.SendActivityAsync(MessageFactory.Text($"You have chosen **'{languageName}'**.  \nYou can change language anytime by typing in *'change language'*."));
         }
+
+
+        
     }
 }
