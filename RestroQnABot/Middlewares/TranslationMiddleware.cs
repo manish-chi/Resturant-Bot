@@ -57,10 +57,6 @@ namespace RestroQnABot.Middlewares
                         }
                     }
 
-                   
-
-                   
-
                     turnContext.OnUpdateActivity(async (newContext, activity, nextUpdate) =>
                     {
                         string userLanguage = await _languageStateProperty.GetAsync(turnContext, () => TranslationSettings.DefaultLanguage) ?? TranslationSettings.DefaultLanguage;

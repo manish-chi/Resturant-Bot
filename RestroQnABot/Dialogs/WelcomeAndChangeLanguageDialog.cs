@@ -61,12 +61,19 @@ namespace RestroQnABot.Dialogs
 
             if (knowleageSourceData.multiLang)
             {
-                ConnectorClient connector = new ConnectorClient(
-                    new Uri(stepContext.Context.Activity.ServiceUrl),
-                    _configuration["MicrosoftAppId"], _configuration["MicrosoftAppPassword"]
-                    );
-
                 await _languageManager.CheckAndSetLanguageAsync(stepContext.Context, cancellationToken);
+
+                var reply = await _cardManager.WelcomeCard(knowleageSourceData.data[0]);
+
+                await stepContext.Context.SendActivityAsync(reply, cancellationToken);
+            }
+            else
+            {
+
+                ConnectorClient connector = new ConnectorClient(
+                   new Uri(stepContext.Context.Activity.ServiceUrl),
+                   _configuration["MicrosoftAppId"], _configuration["MicrosoftAppPassword"]
+                   );
 
                 var welcomeReply = stepContext.Context.Activity.CreateReply();
 
@@ -75,16 +82,9 @@ namespace RestroQnABot.Dialogs
                 welcomeReply.Attachments = reply.Attachments;
 
                 await connector.Conversations.SendToConversationAsync(welcomeReply, cancellationToken);
-
-            }
-            else {
-
-                var reply = await _cardManager.WelcomeCard(knowleageSourceData.data[0]);
-
-                await stepContext.Context.SendActivityAsync(reply, cancellationToken);
             }
 
-          
+
 
             return await stepContext.EndDialogAsync(null, cancellationToken);
         }
@@ -97,7 +97,7 @@ namespace RestroQnABot.Dialogs
             {
                 ConnectorClient connector = new ConnectorClient(
                     new Uri(stepContext.Context.Activity.ServiceUrl),
-                    _configuration["MicrosoftAppId"],_configuration["MicrosoftAppPassword"] 
+                    _configuration["MicrosoftAppId"], _configuration["MicrosoftAppPassword"]
                     );
 
                 var reply = await _cardManager.ChangeLanguageCard(knowleageSourceData.data[0]);
@@ -112,7 +112,7 @@ namespace RestroQnABot.Dialogs
             }
             else
             {
-                return await stepContext.NextAsync(null,cancellationToken);
+                return await stepContext.NextAsync(null, cancellationToken);
             }
         }
 
