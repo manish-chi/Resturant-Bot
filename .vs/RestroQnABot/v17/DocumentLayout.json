@@ -1,0 +1,215 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Manish\\source\\repos\\Bot2022\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{02B2CBB5-E97B-49CC-AECC-EC0F05459DFC}|RestroQnABot\\RestroQnABot.csproj|c:\\users\\manish\\source\\repos\\bot2022\\restroqnabot\\restroqnabot.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{02B2CBB5-E97B-49CC-AECC-EC0F05459DFC}|RestroQnABot\\RestroQnABot.csproj|solutionrelative:restroqnabot\\restroqnabot.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02B2CBB5-E97B-49CC-AECC-EC0F05459DFC}|RestroQnABot\\RestroQnABot.csproj|c:\\users\\manish\\source\\repos\\bot2022\\restroqnabot\\appsettings.production.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{02B2CBB5-E97B-49CC-AECC-EC0F05459DFC}|RestroQnABot\\RestroQnABot.csproj|solutionrelative:restroqnabot\\appsettings.production.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02B2CBB5-E97B-49CC-AECC-EC0F05459DFC}|RestroQnABot\\RestroQnABot.csproj|c:\\users\\manish\\source\\repos\\bot2022\\restroqnabot\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02B2CBB5-E97B-49CC-AECC-EC0F05459DFC}|RestroQnABot\\RestroQnABot.csproj|solutionrelative:restroqnabot\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02B2CBB5-E97B-49CC-AECC-EC0F05459DFC}|RestroQnABot\\RestroQnABot.csproj|c:\\users\\manish\\source\\repos\\bot2022\\restroqnabot\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02B2CBB5-E97B-49CC-AECC-EC0F05459DFC}|RestroQnABot\\RestroQnABot.csproj|solutionrelative:restroqnabot\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02B2CBB5-E97B-49CC-AECC-EC0F05459DFC}|RestroQnABot\\RestroQnABot.csproj|c:\\users\\manish\\source\\repos\\bot2022\\restroqnabot\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{02B2CBB5-E97B-49CC-AECC-EC0F05459DFC}|RestroQnABot\\RestroQnABot.csproj|solutionrelative:restroqnabot\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02B2CBB5-E97B-49CC-AECC-EC0F05459DFC}|RestroQnABot\\RestroQnABot.csproj|c:\\users\\manish\\source\\repos\\bot2022\\restroqnabot\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{02B2CBB5-E97B-49CC-AECC-EC0F05459DFC}|RestroQnABot\\RestroQnABot.csproj|solutionrelative:restroqnabot\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02B2CBB5-E97B-49CC-AECC-EC0F05459DFC}|RestroQnABot\\RestroQnABot.csproj|c:\\users\\manish\\source\\repos\\bot2022\\restroqnabot\\dialogs\\welcomeandchangelanguagedialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02B2CBB5-E97B-49CC-AECC-EC0F05459DFC}|RestroQnABot\\RestroQnABot.csproj|solutionrelative:restroqnabot\\dialogs\\welcomeandchangelanguagedialog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02B2CBB5-E97B-49CC-AECC-EC0F05459DFC}|RestroQnABot\\RestroQnABot.csproj|c:\\users\\manish\\source\\repos\\bot2022\\restroqnabot\\controllers\\botcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02B2CBB5-E97B-49CC-AECC-EC0F05459DFC}|RestroQnABot\\RestroQnABot.csproj|solutionrelative:restroqnabot\\controllers\\botcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02B2CBB5-E97B-49CC-AECC-EC0F05459DFC}|RestroQnABot\\RestroQnABot.csproj|c:\\users\\manish\\source\\repos\\bot2022\\restroqnabot\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02B2CBB5-E97B-49CC-AECC-EC0F05459DFC}|RestroQnABot\\RestroQnABot.csproj|solutionrelative:restroqnabot\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02B2CBB5-E97B-49CC-AECC-EC0F05459DFC}|RestroQnABot\\RestroQnABot.csproj|c:\\users\\manish\\source\\repos\\bot2022\\restroqnabot\\wwwroot\\default.htm||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02B2CBB5-E97B-49CC-AECC-EC0F05459DFC}|RestroQnABot\\RestroQnABot.csproj|solutionrelative:restroqnabot\\wwwroot\\default.htm||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02B2CBB5-E97B-49CC-AECC-EC0F05459DFC}|RestroQnABot\\RestroQnABot.csproj|c:\\users\\manish\\source\\repos\\bot2022\\restroqnabot\\views\\home\\south.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{02B2CBB5-E97B-49CC-AECC-EC0F05459DFC}|RestroQnABot\\RestroQnABot.csproj|solutionrelative:restroqnabot\\views\\home\\south.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02B2CBB5-E97B-49CC-AECC-EC0F05459DFC}|RestroQnABot\\RestroQnABot.csproj|c:\\users\\manish\\source\\repos\\bot2022\\restroqnabot\\utlities\\azuretranslationclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{02B2CBB5-E97B-49CC-AECC-EC0F05459DFC}|RestroQnABot\\RestroQnABot.csproj|solutionrelative:restroqnabot\\utlities\\azuretranslationclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 9,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "WelcomeAndChangeLanguageDialog.cs",
+              "DocumentMoniker": "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\Dialogs\\WelcomeAndChangeLanguageDialog.cs",
+              "RelativeDocumentMoniker": "RestroQnABot\\Dialogs\\WelcomeAndChangeLanguageDialog.cs",
+              "ToolTip": "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\Dialogs\\WelcomeAndChangeLanguageDialog.cs",
+              "RelativeToolTip": "RestroQnABot\\Dialogs\\WelcomeAndChangeLanguageDialog.cs",
+              "ViewState": "AQIAAEYAAAAAAAAAAAAkwFMAAABYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2022-06-27T04:44:05.327Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.Production.json",
+              "DocumentMoniker": "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\appsettings.Production.json",
+              "RelativeDocumentMoniker": "RestroQnABot\\appsettings.Production.json",
+              "ToolTip": "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\appsettings.Production.json",
+              "RelativeToolTip": "RestroQnABot\\appsettings.Production.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-22T16:46:56.335Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "RestroQnABot\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\appsettings.Development.json",
+              "RelativeToolTip": "RestroQnABot\\appsettings.Development.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-22T16:46:54.934Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "BotController.cs",
+              "DocumentMoniker": "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\Controllers\\BotController.cs",
+              "RelativeDocumentMoniker": "RestroQnABot\\Controllers\\BotController.cs",
+              "ToolTip": "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\Controllers\\BotController.cs",
+              "RelativeToolTip": "RestroQnABot\\Controllers\\BotController.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAIwCMAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2022-06-24T12:19:37.833Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Startup.cs",
+              "DocumentMoniker": "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\Startup.cs",
+              "RelativeDocumentMoniker": "RestroQnABot\\Startup.cs",
+              "ToolTip": "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\Startup.cs",
+              "RelativeToolTip": "RestroQnABot\\Startup.cs",
+              "ViewState": "AQIAAE0AAAAAAAAAAAArwFcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2022-06-24T13:03:07.502Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\Program.cs",
+              "RelativeDocumentMoniker": "RestroQnABot\\Program.cs",
+              "ToolTip": "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\Program.cs",
+              "RelativeToolTip": "RestroQnABot\\Program.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-21T18:06:16.854Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "RestroQnABot\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "RestroQnABot\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2022-06-24T12:14:43.062Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "default.htm",
+              "DocumentMoniker": "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\wwwroot\\default.htm",
+              "RelativeDocumentMoniker": "RestroQnABot\\wwwroot\\default.htm",
+              "ToolTip": "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\wwwroot\\default.htm",
+              "RelativeToolTip": "RestroQnABot\\wwwroot\\default.htm",
+              "ViewState": "AQIAAFcAAAAAAAAAAAAAAGgAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2022-06-24T12:31:25.694Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\appsettings.json",
+              "RelativeDocumentMoniker": "RestroQnABot\\appsettings.json",
+              "ToolTip": "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\appsettings.json",
+              "RelativeToolTip": "RestroQnABot\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2022-06-27T09:13:28.351Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "RestroQnABot.csproj",
+              "DocumentMoniker": "C:\\Users\\Manish\\Source\\Repos\\Bot2022\\RestroQnABot\\RestroQnABot.csproj",
+              "RelativeDocumentMoniker": "RestroQnABot\\RestroQnABot.csproj",
+              "ToolTip": "C:\\Users\\Manish\\Source\\Repos\\Bot2022\\RestroQnABot\\RestroQnABot.csproj",
+              "RelativeToolTip": "RestroQnABot\\RestroQnABot.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-06-21T14:45:45.811Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "South.cshtml",
+              "DocumentMoniker": "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\Views\\Home\\South.cshtml",
+              "RelativeDocumentMoniker": "RestroQnABot\\Views\\Home\\South.cshtml",
+              "ToolTip": "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\Views\\Home\\South.cshtml",
+              "RelativeToolTip": "RestroQnABot\\Views\\Home\\South.cshtml",
+              "ViewState": "AQIAABkAAAAAAAAAAABBwCsAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2022-06-24T12:18:42.502Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AzureTranslationClient.cs",
+              "DocumentMoniker": "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\Utlities\\AzureTranslationClient.cs",
+              "RelativeDocumentMoniker": "RestroQnABot\\Utlities\\AzureTranslationClient.cs",
+              "ToolTip": "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\Utlities\\AzureTranslationClient.cs",
+              "RelativeToolTip": "RestroQnABot\\Utlities\\AzureTranslationClient.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAAowAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2022-06-27T10:46:11.695Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

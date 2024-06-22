@@ -1,2 +1,5 @@
 ".vs/"
-/.vs
+"RestroQnABot/appSettings.Development.json"
+"RestroQnABot/appSettings.Production.json"
+"RestroQnABot/appSettings.json"
+.vsidx

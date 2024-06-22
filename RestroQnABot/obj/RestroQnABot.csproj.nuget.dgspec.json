@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\RestroQnABot.csproj": {}
+    "C:\\Users\\Manish\\Source\\Repos\\Bot2022\\RestroQnABot\\RestroQnABot.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\RestroQnABot.csproj": {
+    "C:\\Users\\Manish\\Source\\Repos\\Bot2022\\RestroQnABot\\RestroQnABot.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\RestroQnABot.csproj",
+        "projectUniqueName": "C:\\Users\\Manish\\Source\\Repos\\Bot2022\\RestroQnABot\\RestroQnABot.csproj",
         "projectName": "RestroQnABot",
-        "projectPath": "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\RestroQnABot.csproj",
+        "projectPath": "C:\\Users\\Manish\\Source\\Repos\\Bot2022\\RestroQnABot\\RestroQnABot.csproj",
         "packagesPath": "C:\\Users\\Manish\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Manish\\source\\repos\\Bot2022\\RestroQnABot\\obj\\",
         "projectStyle": "PackageReference",
