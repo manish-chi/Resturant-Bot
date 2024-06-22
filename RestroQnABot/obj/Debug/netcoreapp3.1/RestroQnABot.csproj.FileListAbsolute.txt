@@ -188,7 +188,13 @@ C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Debug\netcoreapp3.1\Razor\
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Debug\netcoreapp3.1\RestroQnABot.RazorTargetAssemblyInfo.cache
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Debug\netcoreapp3.1\RestroQnABot.RazorTargetAssemblyInfo.cs
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Debug\netcoreapp3.1\RestroQnABot.Views.pdb
-C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Debug\netcoreapp3.1\RestroQnABot.csproj.CopyComplete
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Debug\netcoreapp3.1\RestroQnABot.dll
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Debug\netcoreapp3.1\RestroQnABot.pdb
 C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\obj\Debug\netcoreapp3.1\RestroQnABot.genruntimeconfig.cache
+C:\Users\Manish\source\repos\Bot2022\RestroQnABot\obj\Debug\netcoreapp3.1\RestroQnABot.sourcelink.json
+C:\Users\Manish\source\repos\Bot2022\RestroQnABot\obj\Debug\netcoreapp3.1\staticwebassets\RestroQnABot.StaticWebAssets.Pack.cache
+C:\Users\Manish\source\repos\Bot2022\RestroQnABot\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.RestroQnABot.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Manish\source\repos\Bot2022\RestroQnABot\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.build.RestroQnABot.props
+C:\Users\Manish\source\repos\Bot2022\RestroQnABot\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.buildMultiTargeting.RestroQnABot.props
+C:\Users\Manish\source\repos\Bot2022\RestroQnABot\obj\Debug\netcoreapp3.1\staticwebassets\msbuild.buildTransitive.RestroQnABot.props
+C:\Users\Manish\source\repos\Bot2022\RestroQnABot\obj\Debug\netcoreapp3.1\RestroQn.6F60FCB3.Up2Date

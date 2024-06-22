@@ -4,7 +4,7 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup>
-    <ActiveDebugProfile>EchoBot-Production</ActiveDebugProfile>
+    <ActiveDebugProfile>EchoBot-Developement</ActiveDebugProfile>
     <NameOfLastUsedPublishProfile>C:\Users\Manish\Source\Repos\Bot2022\RestroQnABot\Properties\PublishProfiles\RBot2022-new - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

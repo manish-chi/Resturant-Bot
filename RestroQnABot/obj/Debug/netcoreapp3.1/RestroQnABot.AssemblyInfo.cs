@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RestroQnABot")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c1cf6ee9ec1d0fb1955c52e20e40e950e47f464d")]
 [assembly: System.Reflection.AssemblyProductAttribute("RestroQnABot")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RestroQnABot")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
